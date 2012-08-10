@@ -15,4 +15,8 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   # gem.version       = GoogleApi::VERSION
   gem.version       = GoogleApi::VERSION + "." + Time.now.strftime("%Y%m%d%H%M%S")
+
+  gem.add_development_dependency 'rake'
+  gem.add_development_dependency 'rspec'
+
 end
