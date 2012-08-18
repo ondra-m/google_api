@@ -1,29 +1,8 @@
-# GoogleApi
+# Google Analytics
 
-TODO: Write a gem description
+## Session
 
-## Installation
+There is a 3 way for starting sesssion.
 
-Add this line to your application's Gemfile:
-
-    gem 'google_api'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install google_api
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Added some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+**By cert file**
+    GoogleApi::Ga::Session.login_by_cert
