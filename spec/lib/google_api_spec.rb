@@ -23,4 +23,8 @@ describe "GoogleApi config" do
     GoogleApi::Ga::Session.login_by_cert
   end
 
+  it "GoogleApi load and visit_count must be the same" do
+    GoogleApi::Ga::Data.load('35655316', {metrics: 'ga:visits'})[0][0].should match(GoogleApi::Ga::Data.visits('35655316')[0][0])
+  end
+
 end

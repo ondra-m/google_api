@@ -1,5 +1,8 @@
+$:.unshift File.dirname(__FILE__) + '/../lib'
 require "google_api"
 
 RSpec.configure do |config|
-  # config.add_formatter 'documentation'
+  config.treat_symbols_as_metadata_keys_with_true_values = true
+  config.run_all_when_everything_filtered = true
+  # config.filter_run :focus
 end
