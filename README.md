@@ -227,13 +227,13 @@ GoogleApi::Ga::Data
 > GoogleApi::Ga::Data.id( Integer )
 > ```
 
----
+<br>
 
 > ## cache
 > 
 > For how long in minutes will be data cached. Use 0 for never expire.
 
----
+<br>
 
 > ## start_date
 >
@@ -246,7 +246,7 @@ GoogleApi::Ga::Data
 > &nbsp;&nbsp; _String_ in YYYY-MM-DD or _Date_ or _DateTime_ or _Time_<br>
 > &nbsp;&nbsp; _Integer_ for add or sub days from _Date.today_
 
----
+<br>
 
 > ## end_date
 >
