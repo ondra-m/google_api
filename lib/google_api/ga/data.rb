@@ -220,7 +220,7 @@ module GoogleApi
             end
 
             if block_given?
-              @#{key} = #{key.to_s.capitalize}.new.instance_eval(&block).join
+              @#{key} = #{key.to_s.capitalize}Dsl.new.instance_eval(&block).join
             else
               @#{key} = value
             end

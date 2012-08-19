@@ -4,8 +4,8 @@ require File.expand_path('../lib/google_api/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Ondřej Moravčík"]
   gem.email         = ["moravcik.ondrej@gmail.com"]
-  gem.description   = %q{Google Api}
-  gem.summary       = %q{Google Api}
+  gem.description   = %q{Simple Google Api. Include google analytics.}
+  gem.summary       = %q{Simple Google Api. Include google analytics.}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
@@ -13,8 +13,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "google_api"
   gem.require_paths = ["lib"]
-  # gem.version       = GoogleApi::VERSION
-  gem.version       = GoogleApi::VERSION + "." + Time.now.strftime("%Y%m%d%H%M%S")
+  gem.version       = GoogleApi::VERSION
 
   gem.add_dependency 'google-api-client'
 

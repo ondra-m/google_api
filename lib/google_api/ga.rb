@@ -27,10 +27,10 @@ module GoogleApi
     autoload :Helper, 'google_api/ga/helper'
 
     # Data
-    autoload :Data,    'google_api/ga/data'
-    autoload :DataDsl, 'google_api/ga/data/data_dsl'
-    autoload :Filters, 'google_api/ga/data/filters'
-    autoload :Segment, 'google_api/ga/data/segment'
+    autoload :Data,       'google_api/ga/data'
+    autoload :DataDsl,    'google_api/ga/data/data_dsl'
+    autoload :FiltersDsl, 'google_api/ga/data/filters_dsl'
+    autoload :SegmentDsl, 'google_api/ga/data/segment_dsl'
 
     extend GoogleApi::Ga::Helper
 

@@ -1,9 +1,9 @@
 module GoogleApi
   module Ga
-    class Segment < DataDsl
-      
+    class FiltersDsl < DataDsl
+
       def join
-        "dynamic::" + build_parameter
+        build_parameter
       end
 
     end

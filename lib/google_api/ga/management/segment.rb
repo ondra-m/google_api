@@ -5,8 +5,8 @@ module GoogleApi
       attr_accessor :segmentId
       attr_accessor :definition
 
-      def initialize(account)
-        set(account)
+      def initialize(segment)
+        set(segment)
       end
 
       def self.all(segment_id = '~all')
