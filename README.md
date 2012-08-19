@@ -215,7 +215,7 @@ First you can play on the playground: http://ga-dev-tools.appspot.com/explorer/.
 GoogleApi::Ga::Data
 ```
 <br><br><br>
-> ### ids 
+> ## ids 
 >
 > <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#ids" target="_blank" style="float:right">doc</a>
 >
@@ -229,36 +229,112 @@ GoogleApi::Ga::Data
 
 <br>
 
-> ### cache
+> ## start_date
+>
+> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#startDate" target="_blank" style="float:right">doc</a>
+>
+> **alias:** from
+>
+> **default:** _Date.today_<br>
+> **parameters:**<br>
+> &nbsp;&nbsp; _String_ in YYYY-MM-DD or _Date_ or _DateTime_ or _Time_<br>
+> &nbsp;&nbsp; _Integer_ for add or sub days from _Date.today_
+
+<br>
+
+> ## end_date
+>
+> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#startDate" target="_blank" style="float:right">doc</a>
+>
+> **alias:** from
+>
+> **default:** _Date.today_<br>
+> **parameters:**<br>
+> &nbsp;&nbsp; _String_ in YYYY-MM-DD or _Date_ or _DateTime_ or _Time_<br>
+> &nbsp;&nbsp; _Integer_ for add or sub days from _Date.today_
+
+<br>
+
+> ## metrics
+>
+> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#metrics" target="_blank" style="float:right">doc</a>
+>
+> required parameters
+>
+> **alias:** select
+>
+> **parameters:** Array with String or Symbol, String (not compiled, <i>"ga:visitors"</i>) or Symbol (compiled, <i>:visitors</i>)
+
+<br>
+
+> ## dimensions
+>
+> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#dimensions" target="_blank" style="float:right">doc</a>
+>
+> **alias:** with
+>
+> **parameters:** Array with String or Symbol, String (not compiled, <i>"ga:visitors"</i>) or Symbol (compiled, <i>:visitors</i>)
+
+<br>
+
+> ## sort
+>
+> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#sort" target="_blank" style="float:right">doc</a>
+>
+> **parameters:** Array with String or Symbol, String (not compiled, <i>"ga:visitors"</i>) or Symbol (compiled, <i>:visitors</i>)
+
+<br>
+
+> ## filters
+>
+> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#filters" target="_blank" style="float:right">doc</a>
+>
+> **alias:** where
+>
+> **parameters:**<br>
+> {(attribute operator value) & (attribute operator value) | (attribute operator value)} or String (not compiled)
+
+<br>
+
+> ## segment
+>
+> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#segment" target="_blank" style="float:right">doc</a>
+>
+> **parameters:**<br>
+> {(attribute operator value) & (attribute operator value) | (attribute operator value)} or String (not compiled) <br>
+>  with {} automaticly add "dynamic::"
+
+<br>
+
+> ## start_index
+>
+> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#startIndex" target="_blank" style="float:right">doc</a>
+>
+> **alias:** offset
+>
+> **parameters:** Integer from 1. 
+
+<br>
+
+> ## max_results
+>
+> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#maxResults" target="_blank" style="float:right">doc</a>
+>
+> **alias:** limit
+>
+> **parameters:** Integer from 1 to 10 000. 
+
+<br><br><br>
+
+> ## cache
 > 
 > For how long in minutes will be data cached. Use 0 for never expire.
->
 
 <br>
 
-> ### start_date
+> ## clear
 >
-> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#startDate" target="_blank" style="float:right">doc</a>
->
-> **alias:** from
->
-> **default:** _Date.today_<br>
-> **parameters:**<br>
-> &nbsp;&nbsp; _String_ in YYYY-MM-DD or _Date_ or _DateTime_ or _Time_<br>
-> &nbsp;&nbsp; _Integer_ for add or sub days from _Date.today_
-
-<br>
-
-> ### end_date
->
-> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#startDate" target="_blank" style="float:right">doc</a>
->
-> **alias:** from
->
-> **default:** _Date.today_<br>
-> **parameters:**<br>
-> &nbsp;&nbsp; _String_ in YYYY-MM-DD or _Date_ or _DateTime_ or _Time_<br>
-> &nbsp;&nbsp; _Integer_ for add or sub days from _Date.today_
+> Clear stored data.
 
 ### Fetch data
 
