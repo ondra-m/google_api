@@ -371,6 +371,39 @@ id = GoogleApi::Ga::Profile.all.first.id
 GoogleApi::Ga.id(id)
 ```
 <br>
+**Starting session by line:**<br>
+
+First install launchy:<br>
+`gem install launchy`
+```ruby
+# callback_uri and port can be blank - auto start server at localhost
+GoogleApi::Ga::Session.login_by_line(callback_uri, port)
+
+# 1) create server
+# 2) launch browser and redirect to google api
+# 3) confirm and google api redirect to localhost
+# 4) server get code and start session
+# 5) close server
+
+# Error if not login
+GoogleApi::Ga::Session.check_session!
+```
+<br>
+**Management of accounts:**
+```ruby
+accounts = GoogleApi::Ga::Account.all # all accounts
+
+accounts.first.webproperties # webproperties for account
+
+GoogleApi::Ga::Webproperty.all # all webproperties
+
+GoogleApi::Ga::Profile.all # all profiles
+
+GoogleApi::Ga::Goal.all # all goal
+
+GoogleApi::Ga::Segment.all # all segment
+```
+<br>
 **Count of visitors between previous month and today.**
 ```ruby
 GoogleApi::Ga::Data.from(-30).select(:visits).rows
