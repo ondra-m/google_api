@@ -12,41 +12,51 @@ GoogleApi.configure do
     client_id "2"
   end
 end
-```
-**Or**
 
-```ruby
-GoogleApi.configure do |config|
-  config.client_id "3"
+# ----- OR -----
 
-  config.ga do |ga_config|
-    ga_config.client_id "4"
-  end
-end
+GoogleApi.config.client_id    = "4"
+GoogleApi.config.ga.client_id = "5"
 ```
 
-**Or**
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>example</th>
+      <th>note</th>
+    </tr>
+  </thead>
 
-```ruby
-GoogleApi.config.client_id = "5"
-GoogleApi.config.ga.client_id = "6"
-```
-
-### Get value
-
-```ruby
-GoogleApi.config.client_id
-GoogleApi.config.ga.client_id
-```
-
-### Values
-
-**client\_id:** 123456.apps.googleusercontent.com<br>
-**client\_secret:** 123456123456123456<br>
-**client\_developer\_email:** 123456@developer.gserviceaccount.com<br>
-**client\_cert\_file:** located of your cert file<br>
-**key\_secret:** 'notasecret'<br>
-**redirect\_uri:** nil
+  <tbody>    
+    <tr>
+      <td><b>client_id</b></td>
+      <td>123456.apps.googleusercontent.com</td>
+      <td rowspan="3">required for oauth 2</td>
+    </tr>
+    <tr>
+      <td><b>client_secret</b></td>
+      <td>123456123456123456</td>
+    </tr>
+    <tr>
+      <td><b>redirect_uri</b></td>
+      <td>http://localhost/oauth2callback</td>
+    </tr>
+    <tr>
+      <td><b>client_developer_email</b></td>
+      <td>123456@developer.gserviceaccount.com</td>
+      <td rowspan="3">required for login by cert</td>
+    </tr>
+    <tr>
+      <td><b>client_cert_file</b></td>
+      <td>/home/user/app/123456-privatekey.p12</td>
+    </tr>
+    <tr>
+      <td><b>key_secret</b></td>
+      <td>notasecret</td>
+    </tr>
+  </tbody>
+</table>
 
 Session
 -------
@@ -56,11 +66,10 @@ There is a 3 way for starting sesssion.
 ### By cert file
 
 ```ruby
-# use client_cert_file, client_developer_email
 GoogleApi::Ga::Session.login_by_cert
 ```
 
-Trying to login until login return true.
+If login return false, trying login again.
 
 ```ruby
 GoogleApi::Ga::Session.login_by_cert!
@@ -69,7 +78,6 @@ GoogleApi::Ga::Session.login_by_cert!
 ### By oauth 2
 
 ```ruby
-# use client_id, client_secret, redirect_uri
 # return uri for oauth 2 login
 GoogleApi::Ga::Session.login
 
@@ -95,7 +103,6 @@ This will create TCPServer. After login will be closed.
 **port:** on which port the server will listen
 
 ```ruby
-# use client_id, client_secret
 # default:
 #   server = http://localhost/oauth2callback
 #   port = 0 - get first free port
