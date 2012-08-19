@@ -215,49 +215,49 @@ First you can play on the playground: http://ga-dev-tools.appspot.com/explorer/.
 GoogleApi::Ga::Data
 ```
 <br><br><br>
-> ## ids 
->
-> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#ids" target="_blank" style="float:right">doc</a>
->
-> **alias:** id
->
-> Id of profile, by default is use id from GoogleApi::Ga.id.
->
-> ```ruby
-> GoogleApi::Ga::Data.id( Integer )
-> ```
+## ids 
+
+<a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#ids" target="_blank" style="float:right">doc</a>
+
+**alias:** id
+
+Id of profile, by default is use id from GoogleApi::Ga.id.
+
+```ruby
+GoogleApi::Ga::Data.id( Integer )
+```
 
 <br>
 
-> ## cache
-> 
-> For how long in minutes will be data cached. Use 0 for never expire.
+## cache
+ 
+For how long in minutes will be data cached. Use 0 for never expire.
 
 <br>
 
-> ## start_date
->
-> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#startDate" target="_blank" style="float:right">doc</a>
->
-> **alias:** from
->
-> **default:** _Date.today_<br>
-> **parameters:**<br>
-> &nbsp;&nbsp; _String_ in YYYY-MM-DD or _Date_ or _DateTime_ or _Time_<br>
-> &nbsp;&nbsp; _Integer_ for add or sub days from _Date.today_
+## start_date
+
+<a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#startDate" target="_blank" style="float:right">doc</a>
+
+**alias:** from
+
+**default:** _Date.today_<br>
+**parameters:**<br>
+&nbsp;&nbsp; _String_ in YYYY-MM-DD or _Date_ or _DateTime_ or _Time_<br>
+&nbsp;&nbsp; _Integer_ for add or sub days from _Date.today_
 
 <br>
 
-> ## end_date
->
-> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#startDate" target="_blank" style="float:right">doc</a>
->
-> **alias:** from
->
-> **default:** _Date.today_<br>
-> **parameters:**<br>
-> &nbsp;&nbsp; _String_ in YYYY-MM-DD or _Date_ or _DateTime_ or _Time_<br>
-> &nbsp;&nbsp; _Integer_ for add or sub days from _Date.today_
+## end_date
+
+<a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#startDate" target="_blank" style="float:right">doc</a>
+
+**alias:** from
+
+**default:** _Date.today_<br>
+**parameters:**<br>
+&nbsp;&nbsp; _String_ in YYYY-MM-DD or _Date_ or _DateTime_ or _Time_<br>
+&nbsp;&nbsp; _Integer_ for add or sub days from _Date.today_
 
 ### Fetch data
 
