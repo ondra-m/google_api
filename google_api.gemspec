@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["moravcik.ondrej@gmail.com"]
   gem.description   = %q{Simple Google Api. Include google analytics.}
   gem.summary       = %q{Simple Google Api. Include google analytics.}
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/ondra-m/google_api"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
