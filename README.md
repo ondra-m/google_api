@@ -112,33 +112,61 @@ GoogleApi::Ga::Session.login_by_line(server, port)
 Management
 ----------
 
-`Account`, `Webproperty`, `Profile`, `Goal` have method **all** and **find(id)**.
+<table>
+  <thead>
+    <tr>
+      <th colspan="2">Account ~~~ Webproperty ~~~ Profile ~~~ Goal ~~~ Segment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>all</b></td>
+      <td>find all</td>
+    </tr>
+    <tr>
+      <td><b>find(id)</b></td>
+      <td>find one by id</td>
+    </tr>
+    <tr>
+      <td><b>refresh</b></td>
+      <td>refresh data</td>
+    </tr>
+  </tbody>
+</table>
 
 ```ruby
-# Methods:
-#   all
-#   find(id)
-#
-# Values:
-#   id, name, created, updated
+# Variables: id, name, created, updated
+# Methods:   webproperties
 
 GoogleApi::Ga::Account
+```
 
-# accountId, websiteUrl
+```ruby
+# Variables: id, name, created, updated, accountId, websiteUrl
+# Methods:   account, profiles
+
 GoogleApi::Ga::Webproperty
+```
 
-# accountId, websiteUrl, currency, timezone
+```ruby
+# Variables: id, name, created, updated, accountId, websiteUrl, currency, timezone
+# Methods:   webproperty, goals
+
 GoogleApi::Ga::Profile
+```
 
-# accountId, webPropertyId, profileId, value, active, type, goal
+```ruby
+# Variables: accountId, webPropertyId, profileId, value, active, type, goal
+# Methods:   profile
+
 GoogleApi::Ga::Goal
 ```
 
+```ruby
+# Variables: segmentId, definition
 
-
-
-
-
+GoogleApi::Ga::Segment
+```
 
 
 
