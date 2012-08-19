@@ -223,11 +223,11 @@ GoogleApi::Ga::Data
 >
 > Id of profile, by default is use id from GoogleApi::Ga.id.
 >
-> ```ruby
-> GoogleApi::Ga::Data.id( Integer )
-> ```
+```ruby
+GoogleApi::Ga::Data.id( Integer )
+```
 
-<img>
+<br>
 
 > ## start_date
 >
