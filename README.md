@@ -28,47 +28,54 @@ GoogleApi.config.ga.client_id = "5"
     </tr>
   </thead>
 
-  <tbody>    
+  <tbody>
     <tr>
       <td><b>client_id</b></td>
-      <td>123456.apps.googleusercontent.com</td>
+      <td><i>123456.apps.googleusercontent.com</i></td>
       <td rowspan="3">required for oauth 2</td>
     </tr>
     <tr>
       <td><b>client_secret</b></td>
-      <td>123456123456123456</td>
+      <td><i>123456123456123456</i></td>
     </tr>
     <tr>
       <td><b>redirect_uri</b></td>
-      <td>http://localhost/oauth2callback</td>
+      <td><i>http://localhost/oauth2callback</i></td>
     </tr>
     <tr>
       <td><b>client_developer_email</b></td>
-      <td>123456@developer.gserviceaccount.com</td>
+      <td><i>123456@developer.gserviceaccount.com</i></td>
       <td rowspan="3">required for login by cert</td>
     </tr>
     <tr>
       <td><b>client_cert_file</b></td>
-      <td>/home/user/app/123456-privatekey.p12</td>
+      <td><i>/home/user/app/123456-privatekey.p12</i></td>
     </tr>
     <tr>
       <td><b>key_secret</b></td>
-      <td>notasecret</td>
+      <td><i>notasecret</i></td>
     </tr>
     <tr>
       <td colspan="3">only for ga</td>
     </tr>
     <tr>
       <td><b>cache</b></td>
-      <td>default: <b>GoogleApi::Cache.new</b></td>
+      <td><i>default: </i><b>GoogleApi::Cache.new</b></td>
       <td>more information <a href="#Cache">Cache</a></td>
     </tr>
   </tbody>
 </table>
 
-<a name="Cache">
+<a name="Cache"></a>
 Cache
 -----
+
+Cache mus have these methods:
+
+`write(key, value, expire = 0)` - 0 for never expire<br>
+`read(key)`<br>
+`exists?(key)`<br>
+`delete(key)`
 
 Session
 -------
@@ -200,13 +207,100 @@ GoogleApi::Ga.id(123456) # profile id
 Data
 ----
 
-First you can use playground: http://ga-dev-tools.appspot.com/explorer
+First you can play on the playground: http://ga-dev-tools.appspot.com/explorer.
 
 ```ruby
 GoogleApi::Ga::Data
 ```
 
 
+
+
+
+
+
+
+filter
+segment
+start_index
+max_results
+
+<table style="width:100%">
+
+    <tr>
+      <td style="width:10%">name</td>
+      <td>alias</td>
+      <td>description</td>
+      <td>required</td>
+    </tr>
+
+    <tr>
+      <td>ids</td>
+      <td>id</td>
+      <td>id of profile, by default use default id (GoogleApi::Ga.id)</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>cache</td>
+      <td></td>
+      <td>
+        for how long in minutes will be data cached,<br>
+        for example: visitors count between last year and last week will not change
+      </td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>start_date</td>
+      <td>from</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>end_date</td>
+      <td>to</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>metrics</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>dimensions</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>sort</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+
+</table>
 
 
 
