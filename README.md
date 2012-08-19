@@ -215,7 +215,7 @@ First you can play on the playground: http://ga-dev-tools.appspot.com/explorer/.
 GoogleApi::Ga::Data
 ```
 <br><br><br>
-## ids 
+### ids 
 
 <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#ids" target="_blank" style="float:right">doc</a>
 
@@ -227,15 +227,11 @@ Id of profile, by default is use id from GoogleApi::Ga.id.
 GoogleApi::Ga::Data.id( Integer )
 ```
 
-<br>
-
-## cache
+### cache
  
 For how long in minutes will be data cached. Use 0 for never expire.
 
-<br>
-
-## start_date
+### start_date
 
 <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#startDate" target="_blank" style="float:right">doc</a>
 
@@ -246,9 +242,7 @@ For how long in minutes will be data cached. Use 0 for never expire.
 &nbsp;&nbsp; _String_ in YYYY-MM-DD or _Date_ or _DateTime_ or _Time_<br>
 &nbsp;&nbsp; _Integer_ for add or sub days from _Date.today_
 
-<br>
-
-## end_date
+### end_date
 
 <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#startDate" target="_blank" style="float:right">doc</a>
 
