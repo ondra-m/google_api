@@ -108,3 +108,42 @@ This will create TCPServer. After login will be closed.
 #   port = 0 - get first free port
 GoogleApi::Ga::Session.login_by_line(server, port)
 ```
+
+Management
+----------
+
+`Account`, `Webproperty`, `Profile`, `Goal` have method **all** and **find(id)**.
+
+```ruby
+# Methods:
+#   all
+#   find(id)
+#
+# Values:
+#   id, name, created, updated
+
+GoogleApi::Ga::Account
+
+# accountId, websiteUrl
+GoogleApi::Ga::Webproperty
+
+# accountId, websiteUrl, currency, timezone
+GoogleApi::Ga::Profile
+
+# accountId, webPropertyId, profileId, value, active, type, goal
+GoogleApi::Ga::Goal
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
