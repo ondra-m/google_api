@@ -55,8 +55,19 @@ GoogleApi.config.ga.client_id = "5"
       <td><b>key_secret</b></td>
       <td>notasecret</td>
     </tr>
+    <tr>
+      <td colspan="3">only for ga</td>
+    </tr>
+    <tr>
+      <td><b>cache</b></td>
+      <td>default: <b>GoogleApi::Cache.new</b></td>
+      <td>more information #cache</td>
+    </tr>
   </tbody>
 </table>
+
+Cache
+-----
 
 Session
 -------
@@ -134,12 +145,16 @@ Management
   </tbody>
 </table>
 
+#### Account
+
 ```ruby
 # Variables: id, name, created, updated
 # Methods:   webproperties
 
 GoogleApi::Ga::Account
 ```
+
+#### Webproperty
 
 ```ruby
 # Variables: id, name, created, updated, accountId, websiteUrl
@@ -148,12 +163,16 @@ GoogleApi::Ga::Account
 GoogleApi::Ga::Webproperty
 ```
 
+#### Profile
+
 ```ruby
 # Variables: id, name, created, updated, accountId, websiteUrl, currency, timezone
 # Methods:   webproperty, goals
 
 GoogleApi::Ga::Profile
 ```
+
+#### Goal
 
 ```ruby
 # Variables: accountId, webPropertyId, profileId, value, active, type, goal
@@ -162,14 +181,29 @@ GoogleApi::Ga::Profile
 GoogleApi::Ga::Goal
 ```
 
+#### Segment
+
 ```ruby
 # Variables: segmentId, definition
 
 GoogleApi::Ga::Segment
 ```
 
+Set default id
+--------------
 
+```ruby
+GoogleApi::Ga.id(123456) # profile id
+```
 
+Data
+----
+
+First you can use playground: http://ga-dev-tools.appspot.com/explorer
+
+```ruby
+GoogleApi::Ga::Data
+```
 
 
 
