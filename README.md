@@ -214,111 +214,50 @@ First you can play on the playground: http://ga-dev-tools.appspot.com/explorer/.
 ```ruby
 GoogleApi::Ga::Data
 ```
+<br><br><br>
+> ## ids 
+>
+> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#ids" target="_blank" style="float:right">doc</a>
+>
+> **alias:** id
+>
+> Id of profile, by default is use id from GoogleApi::Ga.id.
+>
+> ```ruby
+> GoogleApi::Ga::Data.id( Integer )
+> ```
 
-<table>
-  <thead>
-    <tr>
-      <th>method</th>
-      <th>alias</th>
-      <th>description</th>
-      <th>required</th>
-      <th></th>
-    </tr>
-  </thead>
+---
 
-  <tbody>  
-    <tr>
-      <td>ids</td>
-      <td>id</td>
-      <td>id of profile, by default use default id (GoogleApi::Ga.id)</td>
-      <td>yes (if GoogleApi::Ga.id not set)</td>
-      <td><a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#ids" target="_blank">doc</a></td>
-    </tr>
-    <tr>
-      <td>cache</td>
-      <td></td>
-      <td>
-        for how long in minutes will be data cached,<br>
-        for example: visitors count between last year and last week will not change
-      </td>
-      <td>no</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>start_date</td>
-      <td>from</td>
-      <td>
-        default: Date.today<br>
-        parameter: String (YYYY-MM-DD), Date, DateTime, Time, Integer (how many days add to today)
-      </td>
-      <td>no</td>
-      <td><a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#startDate" target="_blank">doc</a></td>
-    </tr>
-    <tr>
-      <td>end_date</td>
-      <td>to</td>
-      <td>same as start_date</td>
-      <td>no</td>
-      <td><a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#endDate" target="_blank">doc</a></td>
-    </tr>
-    <tr>
-      <td>metrics</td>
-      <td>select</td>
-      <td>parameter: Array with String or Symbol, String (not compiled, <i>"ga:visitors"</i>) or Symbol (compiled, <i>:visitors</i>)</td>
-      <td>yes</td>
-      <td><a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#metrics" target="_blank">doc</a></td>
-    </tr>
-    <tr>
-      <td>dimensions</td>
-      <td>with</td>
-      <td>same as metrics</td>
-      <td>no</td>
-      <td><a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#dimensions" target="_blank">doc</a></td>
-    </tr>
-    <tr>
-      <td>sort</td>
-      <td></td>
-      <td>same as metrics</td>
-      <td>no</td>
-      <td><a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#sort" target="_blank">doc</a></td>
-    </tr>
-    <tr>
-      <td>filter</td>
-      <td>where</td>
-      <td>filter data, use {(attribute operator value) & (attribute operator value) | (attribute operator value)} or String (not compiled)</td>
-      <td>no</td>
-      <td><a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#filter" target="_blank">doc</a></td>
-    </tr>
-    <tr>
-      <td>segment</td>
-      <td></td>
-      <td>same as filter, with {} automaticly add "dynamic::"</td>
-      <td>no</td>
-      <td><a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#segment" target="_blank">doc</a></td>
-    </tr>
-    <tr>
-      <td>start_index</td>
-      <td>offset</td>
-      <td>Integer</td>
-      <td>no</td>
-      <td><a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#startIndex" target="_blank">doc</a></td>
-    </tr>
-    <tr>
-      <td>max_results</td>
-      <td>limit</td>
-      <td>Integer from 1 to 10 000</td>
-      <td>no</td>
-      <td><a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#maxResults" target="_blank">doc</a></td>
-    </tr>
-    <tr>
-      <td>clear</td>
-      <td></td>
-      <td>clear loaded data</td>
-      <td>no</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
+> ## cache
+> 
+> For how long in minutes will be data cached. Use 0 for never expire.
+
+---
+
+> ## start_date
+>
+> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#startDate" target="_blank" style="float:right">doc</a>
+>
+> **alias:** from
+>
+> **default:** _Date.today_<br>
+> **parameters:**<br>
+> &nbsp;&nbsp; _String_ in YYYY-MM-DD or _Date_ or _DateTime_ or _Time_<br>
+> &nbsp;&nbsp; _Integer_ for add or sub days from _Date.today_
+
+---
+
+> ## end_date
+>
+> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#startDate" target="_blank" style="float:right">doc</a>
+>
+> **alias:** from
+>
+> **default:** _Date.today_<br>
+> **parameters:**<br>
+> &nbsp;&nbsp; _String_ in YYYY-MM-DD or _Date_ or _DateTime_ or _Time_<br>
+> &nbsp;&nbsp; _Integer_ for add or sub days from _Date.today_
 
 ### Fetch data
 
@@ -329,10 +268,8 @@ You can use one of these. Data is stored in the class.
 <b>`header`</b> - header of data, (`["ga:day", "ga:month", "ga:visitis"]`)<br>
 <b>`count`</b> - number of rows<br>
 <b>`each`</b> - each as you expected, (`|data|` or `|index, data|`)
-<br>
-<br>
 
-##### Clear stored data and fetch again.
+### Clear stored data and fetch again
 
 clear:<br>
 <b>`clear`</b><br>
@@ -340,7 +277,7 @@ clear:<br>
 clear and fetch new:<br>
 <b>`all!`</b>, <b>`rows!`</b>, <b>`header!`</b>, <b>`count!`</b>, <b>`each!`</b><br><br>
 
-If you add some parameters clear is called automaticly.
+If you add some parameters clear is called automaticlly.
 
 Examples
 --------
