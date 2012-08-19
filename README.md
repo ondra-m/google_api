@@ -180,7 +180,6 @@ Management
 ```ruby
 # Variables: id, name, created, updated
 # Methods:   webproperties
-
 GoogleApi::Ga::Account
 ```
 
@@ -189,7 +188,6 @@ GoogleApi::Ga::Account
 ```ruby
 # Variables: id, name, created, updated, accountId, websiteUrl
 # Methods:   account, profiles
-
 GoogleApi::Ga::Webproperty
 ```
 
@@ -198,7 +196,6 @@ GoogleApi::Ga::Webproperty
 ```ruby
 # Variables: id, name, created, updated, accountId, websiteUrl, currency, timezone
 # Methods:   webproperty, goals
-
 GoogleApi::Ga::Profile
 ```
 
@@ -207,7 +204,6 @@ GoogleApi::Ga::Profile
 ```ruby
 # Variables: accountId, webPropertyId, profileId, value, active, type, goal
 # Methods:   profile
-
 GoogleApi::Ga::Goal
 ```
 
@@ -234,7 +230,7 @@ First you can play on the playground: http://ga-dev-tools.appspot.com/explorer/.
 ```ruby
 GoogleApi::Ga::Data
 ```
-<br><br><br>
+<br>
 > ## ids 
 >
 > <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#ids" target="_blank" style="float:right">doc</a>
@@ -356,21 +352,20 @@ GoogleApi::Ga::Data
 
 You can use one of these. Data is stored in the class.
 
-<b>`all`</b> - `[header, rows]`<br>
-<b>`rows`</b> - rows returned by google analytics<br>
-<b>`header`</b> - header of data, (`["ga:day", "ga:month", "ga:visitis"]`)<br>
-<b>`count`</b> - number of rows<br>
-<b>`each`</b> - each as you expected, (`|data|` or `|index, data|`)
+`.all` - `[header, rows]`<br>
+`.rows` - rows returned by google analytics<br>
+`.header` - header of data, (`["ga:day", "ga:month", "ga:visitis"]`)<br>
+`.count` - number of rows<br>
+`.each` - each as you expected, (`|data|` or `|index, data|`)
 
 ### Clear stored data and fetch again
 
-clear:<br>
-<b>`clear`</b><br>
+If you add some parameters clear is called automaticlly.
+
+clear: `.clear`<br>
 
 clear and fetch new:<br>
-<b>`all!`</b>, <b>`rows!`</b>, <b>`header!`</b>, <b>`count!`</b>, <b>`each!`</b><br><br>
-
-If you add some parameters clear is called automaticlly.
+`.all!`, `.rows!`, `.header!`, `.count!`, `.each!`<br>
 
 Examples
 --------
@@ -399,13 +394,14 @@ First install launchy:<br>
 # callback_uri and port can be blank - auto start server at localhost
 GoogleApi::Ga::Session.login_by_line(callback_uri, port)
 
+# This will do
 # 1) create server
 # 2) launch browser and redirect to google api
 # 3) confirm and google api redirect to localhost
 # 4) server get code and start session
 # 5) close server
 
-# Error if not login
+# Check session, error if not login
 GoogleApi::Ga::Session.check_session!
 ```
 <br>
