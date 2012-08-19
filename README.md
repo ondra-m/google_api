@@ -70,9 +70,9 @@ GoogleApi.config.ga.client_id = "5"
 Cache
 -----
 
-Cache mus have these methods:
+Cache must have these methods:
 
-`write(key, value, expire = 0)` - 0 for never expire<br>
+`write(key, value, expire)` - expire=0 for never expire<br>
 `read(key)`<br>
 `exists?(key)`<br>
 `delete(key)`
