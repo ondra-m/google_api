@@ -373,5 +373,18 @@ GoogleApi::Ga::Data.from(-30).to(DateTime.now - 2).select(:visits).cache(30).row
 <br>
 **Visitors by day, month, year from Czech Republic. Browser is Firefox and Opera or Chrome**
 ```ruby
-GoogleApi::Ga::Data.from(-30).select(:visits).with(:day, :month, :year).where{(country == "Czech Republic") & (browser == "Firefox") & (browser == "Opera") | (browser == "Chrome")}.sort(:year, :month, :day).rows
+GoogleApi::Ga::Data.from(-30)
+                   .select(:visits)
+                   .with(:day, :month, :year)
+                   .where{(country == "Czech Republic") & (browser == "Firefox") &
+                          (browser == "Opera") | (browser == "Chrome")}
+                   .sort(:year, :month, :day)
+                   .rows
+# OR
+GoogleApi::Ga::Data.from(-30)
+                   .select(:visits)
+                   .with(:day, :month, :year)
+                   .where("ga:country==Czech Republic;ga:browser==Firefox;ga:browser==Opera,ga:browser==Chrome")
+                   .sort(:year, :month, :day)
+                   .rows
 ```
