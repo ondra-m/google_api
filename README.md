@@ -1,20 +1,25 @@
 Google Analytics
 ================
 
+News
+----
+
+For now is released beta version. Pleas use issues for problems.
+
 Installation
 ------------
 
 Add this line to your application's Gemfile:
 
-    gem 'google_api'
+`gem 'google_api'`
 
 And then execute:
 
-    $ bundle
+`$ bundle`
 
 Or install it yourself as:
 
-    $ gem install google_api
+`$ gem install google_api`
 
 Configuration
 -------------
