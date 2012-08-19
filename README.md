@@ -345,7 +345,7 @@ If you add some parameters clear is called automaticly.
 Examples
 --------
 
-Start session:
+**Start session:**
 ```ruby
 # set configuration
 GoogleApi.config.ga.client_cert_file = "privatekey.p12"
@@ -360,7 +360,7 @@ id = GoogleApi::Ga::Profile.all.first.id
 # set default id
 GoogleApi::Ga.id(id)
 ```
-
+<br>
 **Count of visitors between previous month and today.**
 ```ruby
 GoogleApi::Ga::Data.from(-30).select(:visits).rows
@@ -369,4 +369,9 @@ GoogleApi::Ga::Data.from(-30).select(:visits).rows
 **Count of visitors between previous month and today - 2, and cache it for 30 minutes.**
 ```ruby
 GoogleApi::Ga::Data.from(-30).to(DateTime.now - 2).select(:visits).cache(30).rows
+```
+<br>
+**Visitors by day, month, year from Czech Republic. Browser is Firefox and Opera or Chrome**
+```ruby
+GoogleApi::Ga::Data.from(-30).select(:visits).with(:day, :month, :year).where{(country == "Czech Republic") & (browser == "Firefox") & (browser == "Opera") | (browser == "Chrome")}.sort(:year, :month, :day).rows
 ```
