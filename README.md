@@ -61,7 +61,7 @@ GoogleApi.config.ga.client_id = "5"
     <tr>
       <td><b>cache</b></td>
       <td>default: <b>GoogleApi::Cache.new</b></td>
-      <td>more information #cache</td>
+      <td>more information <a href="#Cache">Cache</a></td>
     </tr>
   </tbody>
 </table>
