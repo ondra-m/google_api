@@ -207,33 +207,23 @@ GoogleApi::Ga.id(123456) # profile id
 Data
 ----
 
-First you can play on the playground: http://ga-dev-tools.appspot.com/explorer.
+First you can play on the playground: http://ga-dev-tools.appspot.com/explorer/.
 
 ```ruby
 GoogleApi::Ga::Data
 ```
 
-
-
-
-
-
-
-
-filter
-segment
-start_index
-max_results
-
 <table style="width:100%">
-
+  <thead>
     <tr>
-      <td style="width:10%">name</td>
-      <td>alias</td>
-      <td>description</td>
-      <td>required</td>
+      <th style="width:10%">name</th>
+      <th>alias</th>
+      <th>description</th>
+      <th>required</th>
     </tr>
+  </thead>
 
+  <tbody>  
     <tr>
       <td>ids</td>
       <td>id</td>
@@ -253,6 +243,7 @@ max_results
       <td>start_date</td>
       <td>from</td>
       <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>end_date</td>
@@ -263,9 +254,11 @@ max_results
       <td>metrics</td>
       <td></td>
       <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>dimensions</td>
+      <td></td>
       <td></td>
       <td></td>
     </tr>
@@ -273,18 +266,28 @@ max_results
       <td>sort</td>
       <td></td>
       <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
       <td></td>
     </tr>
     <tr>
+      <td>filter</td>
       <td></td>
       <td></td>
       <td></td>
     </tr>
     <tr>
+      <td>segment</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>start_index</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>max_results</td>
       <td></td>
       <td></td>
       <td></td>
@@ -293,14 +296,7 @@ max_results
       <td></td>
       <td></td>
       <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
       <td></td>
     </tr>
-
+  </tbody>
 </table>
-
-
-
