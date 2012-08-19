@@ -222,10 +222,6 @@ GoogleApi::Ga::Data
 > **alias:** id
 >
 > Id of profile, by default is use id from GoogleApi::Ga.id.
->
-```ruby
-GoogleApi::Ga::Data.id( Integer )
-```
 
 <br>
 
