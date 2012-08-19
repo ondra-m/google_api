@@ -228,10 +228,10 @@ GoogleApi::Ga::Data
 > ```
 
 <br>
-
+<a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#startDate" target="_blank" style="float:right">doc</a>
 > ## start_date
 >
-> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#startDate" target="_blank" style="float:right">doc</a>
+
 >
 > **alias:** from
 >
