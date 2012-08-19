@@ -84,6 +84,8 @@ There is a 3 way for starting sesssion.
 
 ### By cert file
 
+`First you must add your developer email to google analytics profile.`
+
 ```ruby
 GoogleApi::Ga::Session.login_by_cert
 ```
@@ -220,6 +222,7 @@ GoogleApi::Ga::Data
       <th>alias</th>
       <th>description</th>
       <th>required</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -261,7 +264,7 @@ GoogleApi::Ga::Data
     <tr>
       <td>metrics</td>
       <td>select</td>
-      <td>parameter: Array -> String (not compiled, <i>"ga:visitors"</i>) or Symbol (compiled, <i>:visitors</i>)</td>
+      <td>parameter: Array with String or Symbol, String (not compiled, <i>"ga:visitors"</i>) or Symbol (compiled, <i>:visitors</i>)</td>
       <td>yes</td>
       <td><a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#metrics" target="_blank">doc</a></td>
     </tr>
@@ -316,3 +319,54 @@ GoogleApi::Ga::Data
     </tr>
   </tbody>
 </table>
+
+### Fetch data
+
+You can use one of these. Data is stored in the class.
+
+<b>`all`</b> - `[header, rows]`<br>
+<b>`rows`</b> - rows returned by google analytics<br>
+<b>`header`</b> - header of data, (`["ga:day", "ga:month", "ga:visitis"]`)<br>
+<b>`count`</b> - number of rows<br>
+<b>`each`</b> - each as you expected, (`|data|` or `|index, data|`)
+<br>
+<br>
+
+##### Clear stored data and fetch again.
+
+clear:<br>
+<b>`clear`</b><br>
+
+clear and fetch new:<br>
+<b>`all!`</b>, <b>`rows!`</b>, <b>`header!`</b>, <b>`count!`</b>, <b>`each!`</b><br><br>
+
+If you add some parameters clear is called automaticly.
+
+Examples
+--------
+
+Start session:
+```ruby
+# set configuration
+GoogleApi.config.ga.client_cert_file = "privatekey.p12"
+GoogleApi.config.ga.client_developer_email = "123456@developer.gserviceaccount.com"
+
+# start session
+GoogleApi::Ga::Session.login_by_cert!
+
+# get profile id
+id = GoogleApi::Ga::Profile.all.first.id
+
+# set default id
+GoogleApi::Ga.id(id)
+```
+
+**Count of visitors between previous month and today.**
+```ruby
+GoogleApi::Ga::Data.from(-30).select(:visits).rows
+```
+<br>
+**Count of visitors between previous month and today - 2, and cache it for 30 minutes.**
+```ruby
+GoogleApi::Ga::Data.from(-30).to(DateTime.now - 2).select(:visits).cache(30).rows
+```
