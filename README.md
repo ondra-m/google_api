@@ -213,10 +213,10 @@ First you can play on the playground: http://ga-dev-tools.appspot.com/explorer/.
 GoogleApi::Ga::Data
 ```
 
-<table style="width:100%">
+<table>
   <thead>
     <tr>
-      <th style="width:10%">name</th>
+      <th>method</th>
       <th>alias</th>
       <th>description</th>
       <th>required</th>
