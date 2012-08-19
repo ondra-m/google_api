@@ -228,7 +228,8 @@ GoogleApi::Ga::Data
       <td>ids</td>
       <td>id</td>
       <td>id of profile, by default use default id (GoogleApi::Ga.id)</td>
-      <td>yes</td>
+      <td>yes (if GoogleApi::Ga.id not set)</td>
+      <td><a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#ids" target="_blank">doc</a></td>
     </tr>
     <tr>
       <td>cache</td>
@@ -238,64 +239,79 @@ GoogleApi::Ga::Data
         for example: visitors count between last year and last week will not change
       </td>
       <td>no</td>
+      <td></td>
     </tr>
     <tr>
       <td>start_date</td>
       <td>from</td>
-      <td></td>
-      <td></td>
+      <td>
+        default: Date.today<br>
+        parameter: String (YYYY-MM-DD), Date, DateTime, Time, Integer (how many days add to today)
+      </td>
+      <td>no</td>
+      <td><a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#startDate" target="_blank">doc</a></td>
     </tr>
     <tr>
       <td>end_date</td>
       <td>to</td>
-      <td></td>
+      <td>same as start_date</td>
+      <td>no</td>
+      <td><a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#endDate" target="_blank">doc</a></td>
     </tr>
     <tr>
       <td>metrics</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>select</td>
+      <td>parameter: Array -> String (not compiled, <i>"ga:visitors"</i>) or Symbol (compiled, <i>:visitors</i>)</td>
+      <td>yes</td>
+      <td><a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#metrics" target="_blank">doc</a></td>
     </tr>
     <tr>
       <td>dimensions</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>with</td>
+      <td>same as metrics</td>
+      <td>no</td>
+      <td><a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#dimensions" target="_blank">doc</a></td>
     </tr>
     <tr>
       <td>sort</td>
       <td></td>
-      <td></td>
-      <td></td>
+      <td>same as metrics</td>
+      <td>no</td>
+      <td><a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#sort" target="_blank">doc</a></td>
     </tr>
     <tr>
       <td>filter</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>where</td>
+      <td>filter data, use {(attribute operator value) & (attribute operator value) | (attribute operator value)} or String (not compiled)</td>
+      <td>no</td>
+      <td><a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#filter" target="_blank">doc</a></td>
     </tr>
     <tr>
       <td>segment</td>
       <td></td>
-      <td></td>
-      <td></td>
+      <td>same as filter, with {} automaticly add "dynamic::"</td>
+      <td>no</td>
+      <td><a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#segment" target="_blank">doc</a></td>
     </tr>
     <tr>
       <td>start_index</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>offset</td>
+      <td>Integer</td>
+      <td>no</td>
+      <td><a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#startIndex" target="_blank">doc</a></td>
     </tr>
     <tr>
       <td>max_results</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>limit</td>
+      <td>Integer from 1 to 10 000</td>
+      <td>no</td>
+      <td><a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#maxResults" target="_blank">doc</a></td>
     </tr>
     <tr>
+      <td>clear</td>
       <td></td>
-      <td></td>
-      <td></td>
+      <td>clear loaded data</td>
+      <td>no</td>
       <td></td>
     </tr>
   </tbody>
