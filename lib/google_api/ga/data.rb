@@ -5,8 +5,8 @@ module GoogleApi
       def initialize
         @ids, @cache = nil, nil
         @start_date, @end_date = Date.today, Date.today
-        @dimensions, @metrics, @sort = [], [], []
-        @filter, @segment = nil, nil
+        @metrics, @dimensions, @sort = [], [], []
+        @filters, @segment = nil, nil
         @start_index, @max_results = nil, nil
       end
 
@@ -38,7 +38,7 @@ module GoogleApi
       def build_param(value)
         type?(value, Array)
 
-        value.collect { |v| v.is_a?(Symbol) ? "ga:#{v}" : v }
+        value.flatten.collect { |v| v.is_a?(Symbol) ? "ga:#{v}" : v }
       end
 
       # Check type 
@@ -145,16 +145,12 @@ module GoogleApi
 
       TYPE_3.each do |key, value|
         eval <<-METHOD
-          def #{key}(value = nil, method = :replace)
-            if value.nil?
+          def #{key}(*args)
+            if args.size == 0
               return @#{key}
             end
 
-            case method
-              when :replace then self.#{key}     = value
-              when :add     then self.#{key}_add = value
-              when :sub     then self.#{key}_sub = value
-            end
+            self.#{key} = args
             self
           end
 
@@ -163,9 +159,27 @@ module GoogleApi
             @#{key} = build_param(value)
           end
 
+          def #{key}_add(*args)
+            if args.size == 0
+              return @#{key}
+            end
+
+            self.#{key}_add = args
+            self
+          end
+
           def #{key}_add=(value)
             clear
             @#{key} += build_param(value)
+          end
+
+          def #{key}_sub(*args)
+            if args.size == 0
+              return @#{key}
+            end
+            
+            self.#{key}_sub = args
+            self
           end
 
           def #{key}_sub=(value)
@@ -178,6 +192,12 @@ module GoogleApi
           eval <<-METHOD
             alias :#{value}  :#{key}
             alias :#{value}= :#{key}=
+
+            alias :#{value}_add  :#{key}_add
+            alias :#{value}_add= :#{key}_add=
+
+            alias :#{value}_sub  :#{key}_sub
+            alias :#{value}_sub= :#{key}_sub=
           METHOD
         end
       end
@@ -185,11 +205,11 @@ module GoogleApi
       # -----------------------------------------------------------------------------------
       # Type 4
       #
-      # Filter, Segment
+      # Filters, Segment
       #
       #          name,       alias
       #
-      TYPE_4 = { filter:  :where,
+      TYPE_4 = { filters: :where,
                  segment: nil }
 
       TYPE_4.each do |key, value|
@@ -216,7 +236,7 @@ module GoogleApi
       end
 
       # Add row!, header!, all!, count!. First clear and run method .
-      [:row, :header, :all, :count].each do |value|
+      [:rows, :header, :all, :count].each do |value|
         eval <<-METHOD
           def #{value}!
             clear
@@ -282,7 +302,7 @@ module GoogleApi
 
           @parameters['dimensions']  = @dimensions.join(',') unless @dimensions.empty?
           @parameters['sort']        = @sort.join(',')       unless @sort.empty?
-          @parameters['filter']      = @filter               unless @filter.nil?
+          @parameters['filters']     = @filters              unless @filters.nil?
           @parameters['start-index'] = @start_index          unless @start_index.nil?
           @parameters['max-results'] = @max_results          unless @max_results.nil?
 

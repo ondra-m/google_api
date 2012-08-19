@@ -2,29 +2,62 @@ require "spec_helper"
 
 describe "GoogleApi config" do
 
-  before(:each) do
-    @email = "ondra1166@gmail.com"
+  it "Setting is right." do
+    GoogleApi.configure do
+      client_id "1"
+      client_secret "2"
+      client_developer_email "3"
 
-    GoogleApi.configure do |config|
-      config.email = @email
-
-      config.ga do |ga|
-        ga.client_cert_file = "/home/ondra/projekty/a8edafa07571f8bb093534c1c7d69a7f038ba456-privatekey.p12"
-        ga.client_developer_email = "721218934542@developer.gserviceaccount.com"
+      ga do
+        client_id "4"
+        client_secret "5"
+        client_developer_email "6"
       end
     end
-  end
 
-  it "should have right config" do
-    GoogleApi.config.email.should equal(@email)
-  end
+    GoogleApi.config.client_id.should match("1")
+    GoogleApi.config.client_secret.should match("2")
+    GoogleApi.config.client_developer_email.should match("3")
 
-  it "login" do
-    GoogleApi::Ga::Session.login_by_cert
-  end
+    GoogleApi.config.ga.client_id.should match("4")
+    GoogleApi.config.ga.client_secret.should match("5")
+    GoogleApi.config.ga.client_developer_email.should match("6")
 
-  it "GoogleApi load and visit_count must be the same" do
-    GoogleApi::Ga::Data.load('35655316', {metrics: 'ga:visits'})[0][0].should match(GoogleApi::Ga::Data.visits('35655316')[0][0])
+    GoogleApi.configure do |config|
+      config.client_id "7"
+      config.client_secret "8"
+      config.client_developer_email "9"
+
+      config.ga do |ga_config|
+        ga_config.client_id "10"
+        ga_config.client_secret "11"
+        ga_config.client_developer_email "12"
+      end
+    end
+
+    GoogleApi.config.client_id.should match("7")
+    GoogleApi.config.client_secret.should match("8")
+    GoogleApi.config.client_developer_email.should match("9")
+
+    GoogleApi.config.ga.client_id.should match("10")
+    GoogleApi.config.ga.client_secret.should match("11")
+    GoogleApi.config.ga.client_developer_email.should match("12")
+
+    GoogleApi.config.client_id = "13"
+    GoogleApi.config.client_secret = "14"
+    GoogleApi.config.client_developer_email = "15"
+
+    GoogleApi.config.ga.client_id = "16"
+    GoogleApi.config.ga.client_secret = "17"
+    GoogleApi.config.ga.client_developer_email = "18"
+
+    GoogleApi.config.client_id.should match("13")
+    GoogleApi.config.client_secret.should match("14")
+    GoogleApi.config.client_developer_email.should match("15")
+
+    GoogleApi.config.ga.client_id.should match("16")
+    GoogleApi.config.ga.client_secret.should match("17")
+    GoogleApi.config.ga.client_developer_email.should match("18")
   end
 
 end

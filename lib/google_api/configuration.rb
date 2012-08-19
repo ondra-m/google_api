@@ -8,12 +8,16 @@ module GoogleApi
             @#{key} = value
           end
 
-          def #{key}
+          def #{key}(value = nil, &block)
             if block_given?
-              yield @#{key}
-            else
-              @#{key}
+              @#{key}.instance_eval(&block)
             end
+
+            if value.nil?
+              return @#{key}
+            end
+
+            self.#{key} = value
           end
         METHOD
 
@@ -21,7 +25,7 @@ module GoogleApi
       end
     end
 
-    def configure(config = {})
+    def configure(&block)
       if block_given?
         yield self
       end

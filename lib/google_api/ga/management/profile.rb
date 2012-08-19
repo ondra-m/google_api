@@ -8,7 +8,7 @@ module GoogleApi
       attr_reader :timezone
 
       def initialize(profile)
-        set(webproperty)
+        set(profile)
       end
 
       def self.all(account_id = '~all', webproperty_id = '~all', profile_id = '~all')

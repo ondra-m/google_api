@@ -121,16 +121,20 @@ module GoogleApi
         request = session.gets.gsub(/GET\ \//, '').gsub(/\ HTTP.*/, '')
         request = Hash[URI.decode_www_form(URI(request).query)]
 
-        if login(request['code'])
-          session.write("You have been successfully logged. Now you can close the browser.")
-        else
-          session.write("You have not been logged. Please try again.")
-        end
+        code = request['code']
 
         # Close session and webserver.
         session.close
 
-        return nil
+        if login(code)
+          session.write("You have been successfully logged. Now you can close the browser.")
+
+          return true
+        end
+
+        session.write("You have not been logged. Please try again.")
+
+        return false
       end
 
       def self.check_session!

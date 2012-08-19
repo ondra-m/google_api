@@ -1,6 +1,6 @@
 module GoogleApi
   module Ga
-    class Filter < DataDsl
+    class Filters < DataDsl
 
       def join
         build_parameter

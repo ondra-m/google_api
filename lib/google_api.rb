@@ -31,7 +31,7 @@ module GoogleApi
   end
 
   def self.configure(&block)
-    config.configure(&block)
+    config.instance_eval(&block)
   end
 
 end

@@ -29,7 +29,7 @@ module GoogleApi
     # Data
     autoload :Data,    'google_api/ga/data'
     autoload :DataDsl, 'google_api/ga/data/data_dsl'
-    autoload :Filter,  'google_api/ga/data/filter'
+    autoload :Filters, 'google_api/ga/data/filters'
     autoload :Segment, 'google_api/ga/data/segment'
 
     extend GoogleApi::Ga::Helper
@@ -41,7 +41,7 @@ module GoogleApi
         return @@id
       end
       
-      @@id = id
+      @@id = id.to_i
     end
 
     def self.cache
