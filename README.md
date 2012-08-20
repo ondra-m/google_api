@@ -381,7 +381,8 @@ Examples
 
 
 ```ruby
-# >>> Start session
+# Start session
+# =============
 
   # set configuration
   GoogleApi.config.ga.client_cert_file = "privatekey.p12"
@@ -392,7 +393,8 @@ Examples
 
 
 
-# >>> Get profile id
+# Get profile id
+# ==============
 
   # get profile id
   id = GoogleApi::Ga::Profile.all.first.id
@@ -402,7 +404,8 @@ Examples
 
 
 
-# >>> Starting session by line
+# Starting session by line
+# ========================
 
   # First install launchy:
   #   gem install launchy
@@ -419,13 +422,15 @@ Examples
 
 
 
-# >>> Check session, error if not login
-  
+# Check session, error if not login
+# =================================
+
   GoogleApi::Ga::Session.check_session!
   
   
   
-# >>> Management of accounts
+# Management of accounts
+# ======================
 
   # all accounts
   accounts = GoogleApi::Ga::Account.all
@@ -447,17 +452,22 @@ Examples
 
 
 
-# >>> Count of visitors between previous month and today
+# Count of visitors between previous month and today
+# ==================================================
 
   GoogleApi::Ga::Data.from(-30).select(:visits).rows
 
 
-# >>> Count of visitors between previous month and today - 2, and cache it for 30 minutes
+
+# Count of visitors between previous month and today - 2, and cache it for 30 minutes
+# ===================================================================================
 
 GoogleApi::Ga::Data.from(-30).to(-2).select(:visits).cache(30).rows
 
 
-# >>> Visitors by day, month, year from Czech Republic. Browser is Firefox and Opera or Chrome
+
+# Visitors by day, month, year from Czech Republic. Browser is Firefox and Opera or Chrome
+# ========================================================================================
 
   GoogleApi::Ga::Data.from(-30).select(:visits).with(:day, :month, :year)
                      .sort(:year, :month, :day)
