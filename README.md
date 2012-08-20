@@ -32,6 +32,8 @@ Or install it yourself as:
 Configuration
 -------------
 
+First you must create project at https://code.google.com/apis/console.
+
 ```ruby
 GoogleApi.configure do
   client_id "1"
@@ -108,7 +110,7 @@ Cache must have these methods:
 Session
 -------
 
-There is a 3 way for starting sesssion.
+There is a 3 way for starting sesssion. Client login with username and password is deprecated.
 
 ### By cert file
 
@@ -218,7 +220,7 @@ GoogleApi::Ga::Goal
 #### Segment
 
 ```ruby
-# Variables: segmentId, definition
+# Variables: id, name, created, updated, segmentId, definition
 GoogleApi::Ga::Segment
 ```
 
@@ -389,7 +391,6 @@ clear and fetch new:<br>
 
 Examples
 --------
-
 
 ```ruby
 # Start session
