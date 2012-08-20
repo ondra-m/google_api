@@ -471,13 +471,14 @@ GoogleApi::Ga::Data.from(-30).to(-2).select(:visits).cache(30).rows
 
   GoogleApi::Ga::Data.from(-30).select(:visits).with(:day, :month, :year)
                      .sort(:year, :month, :day)
-                     .where{(country == "Czech Republic") & (browser == "Firefox") &
-                          (browser == "Opera") | (browser == "Chrome")}
+                     .where{(country == "Czech Republic") & 
+                            (browser == "Firefox") &
+                            (browser == "Opera") | 
+                            (browser == "Chrome")}
                      .rows
   # ----- OR -----
   GoogleApi::Ga::Data.from(-30).select(:visits).with(:day, :month, :year)
                      .sort(:year, :month, :day)
                      .where("ga:country==Czech Republic;ga:browser==Firefox;ga:browser==Opera,ga:browser==Chrome")
-                   
                      .rows
 ```
