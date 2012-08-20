@@ -18,28 +18,16 @@ module GoogleApi
         GoogleApi.config
       end
 
-      def self.client_id
-        _config.ga.client_id ? _config.ga.client_id : _config.client_id
-      end
+      [:client_id, :client_secret, :redirect_uri, :client_cert_file, :client_developer_email, :key_secret].each do |key|
+        eval <<-METHOD
+          def self.#{key}
+            to_return = _config.ga.#{key} ? _config.ga.#{key} : _config.#{key}
 
-      def self.client_secret
-        _config.ga.client_secret ? _config.ga.client_secret : _config.client_secret
-      end
-
-      def self.redirect_uri
-        _config.ga.redirect_uri ? _config.ga.redirect_uri : _config.redirect_uri
-      end
-
-      def self.client_cert_file
-        _config.ga.client_cert_file ? _config.ga.client_cert_file : _config.client_cert_file
-      end
-
-      def self.client_developer_email
-        _config.ga.client_developer_email ? _config.ga.client_developer_email : _config.client_developer_email
-      end
-
-      def self.key_secret
-        _config.ga.key_secret ? _config.ga.key_secret : _config.key_secret
+            if to_return.nil?
+              raise GoogleApi::CanBeNilError, "#{key} can be nil."
+            end
+          end
+        METHOD
       end
 
       # ---------------------------------------------------------------------------------------

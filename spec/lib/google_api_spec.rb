@@ -1,7 +1,6 @@
 require "spec_helper"
 
-describe "GoogleApi config" do
-
+describe "GoogleApi::Configuration" do
   it "Setting is right." do
     GoogleApi.configure do
       client_id "1"
@@ -15,13 +14,13 @@ describe "GoogleApi config" do
       end
     end
 
-    GoogleApi.config.client_id.should match("1")
-    GoogleApi.config.client_secret.should match("2")
-    GoogleApi.config.client_developer_email.should match("3")
+    GoogleApi.config.client_id.should eq("1")
+    GoogleApi.config.client_secret.should eq("2")
+    GoogleApi.config.client_developer_email.should eq("3")
 
-    GoogleApi.config.ga.client_id.should match("4")
-    GoogleApi.config.ga.client_secret.should match("5")
-    GoogleApi.config.ga.client_developer_email.should match("6")
+    GoogleApi.config.ga.client_id.should eq("4")
+    GoogleApi.config.ga.client_secret.should eq("5")
+    GoogleApi.config.ga.client_developer_email.should eq("6")
 
     GoogleApi.configure do |config|
       config.client_id "7"
@@ -35,13 +34,13 @@ describe "GoogleApi config" do
       end
     end
 
-    GoogleApi.config.client_id.should match("7")
-    GoogleApi.config.client_secret.should match("8")
-    GoogleApi.config.client_developer_email.should match("9")
+    GoogleApi.config.client_id.should eq("7")
+    GoogleApi.config.client_secret.should eq("8")
+    GoogleApi.config.client_developer_email.should eq("9")
 
-    GoogleApi.config.ga.client_id.should match("10")
-    GoogleApi.config.ga.client_secret.should match("11")
-    GoogleApi.config.ga.client_developer_email.should match("12")
+    GoogleApi.config.ga.client_id.should eq("10")
+    GoogleApi.config.ga.client_secret.should eq("11")
+    GoogleApi.config.ga.client_developer_email.should eq("12")
 
     GoogleApi.config.client_id = "13"
     GoogleApi.config.client_secret = "14"
@@ -51,13 +50,12 @@ describe "GoogleApi config" do
     GoogleApi.config.ga.client_secret = "17"
     GoogleApi.config.ga.client_developer_email = "18"
 
-    GoogleApi.config.client_id.should match("13")
-    GoogleApi.config.client_secret.should match("14")
-    GoogleApi.config.client_developer_email.should match("15")
+    GoogleApi.config.client_id.should eq("13")
+    GoogleApi.config.client_secret.should eq("14")
+    GoogleApi.config.client_developer_email.should eq("15")
 
-    GoogleApi.config.ga.client_id.should match("16")
-    GoogleApi.config.ga.client_secret.should match("17")
-    GoogleApi.config.ga.client_developer_email.should match("18")
+    GoogleApi.config.ga.client_id.should eq("16")
+    GoogleApi.config.ga.client_secret.should eq("17")
+    GoogleApi.config.ga.client_developer_email.should eq("18")
   end
-
 end

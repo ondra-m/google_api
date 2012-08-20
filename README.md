@@ -1,4 +1,4 @@
-Google Analytics
+Google Analytics [![Build Status](https://secure.travis-ci.org/[ondra-m]/[google_api].png)](http://travis-ci.org/[ondra-m]/[google_api])
 ================
 
 <a href="#examples">examples</a>
@@ -276,6 +276,8 @@ GoogleApi::Ga::Data
 >
 > **alias:** select
 >
+> you can also add or sub parameters with `.metrics_add` or `.metrics_sub`
+>
 > **parameters:** Array with String or Symbol, String (not compiled, <i>"ga:visitors"</i>) or Symbol (compiled, <i>:visitors</i>)
 
 <br>
@@ -286,6 +288,8 @@ GoogleApi::Ga::Data
 >
 > **alias:** with
 >
+> you can also add or sub parameters with `.dimensions_add` or `.dimensions_sub`
+>
 > **parameters:** Array with String or Symbol, String (not compiled, <i>"ga:visitors"</i>) or Symbol (compiled, <i>:visitors</i>)
 
 <br>
@@ -293,6 +297,7 @@ GoogleApi::Ga::Data
 > ## sort
 >
 > <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#sort" target="_blank" style="float:right">doc</a>
+> you can also add or sub parameters with `.sort_add` or `.sort_sub`
 >
 > **parameters:** Array with String or Symbol, String (not compiled, <i>"ga:visitors"</i>) or Symbol (compiled, <i>:visitors</i>)
 

@@ -14,7 +14,6 @@ module GoogleApi
         date = Date.parse(date)
       end
 
-
       date.to_date
     end
 

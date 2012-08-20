@@ -10,10 +10,11 @@ module GoogleApi
 
   autoload :Ga, 'google_api/ga'
 
-  class SessionError < StandardError; end
-  class GaError      < StandardError; end
-  class DateError    < StandardError; end
-  class TypeError    < StandardError; end
+  class SessionError  < StandardError; end
+  class GaError       < StandardError; end
+  class DateError     < StandardError; end
+  class TypeError     < StandardError; end
+  class CanBeNilError < StandardError; end
 
   CONFIGURATION = {
     client_id: nil,
