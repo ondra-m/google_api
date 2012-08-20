@@ -1,7 +1,7 @@
 Google Analytics
 ================
 
-<a href="#Examples">examples</a>
+<a href="#examples">examples</a>
 
 News
 ----
