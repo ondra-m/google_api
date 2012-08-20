@@ -32,7 +32,7 @@ Or install it yourself as:
 Configuration
 -------------
 
-First you must create project at [https://code.google.com/apis/console](https://code.google.com/apis/console){:target="_blank"}.
+First you must create project at <a href="https://code.google.com/apis/console" target="_blank">google console</a>.   
 
 ```ruby
 GoogleApi.configure do
