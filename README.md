@@ -1,6 +1,8 @@
 Google Analytics
 ================
 
+<a href="#examples">examples</a>
+
 News
 ----
 
@@ -50,36 +52,36 @@ GoogleApi.config.ga.client_id = "5"
 
   <tbody>
     <tr>
-      <td><b>client_id</b></td>
+      <td>client_id</td>
       <td><i>123456.apps.googleusercontent.com</i></td>
       <td rowspan="3">required for oauth 2</td>
     </tr>
     <tr>
-      <td><b>client_secret</b></td>
+      <td>client_secret</td>
       <td><i>123456123456123456</i></td>
     </tr>
     <tr>
-      <td><b>redirect_uri</b></td>
+      <td>redirect_uri</td>
       <td><i>http://localhost/oauth2callback</i></td>
     </tr>
     <tr>
-      <td><b>client_developer_email</b></td>
+      <td>client_developer_email</td>
       <td><i>123456@developer.gserviceaccount.com</i></td>
       <td rowspan="3">required for login by cert</td>
     </tr>
     <tr>
-      <td><b>client_cert_file</b></td>
+      <td>client_cert_file</td>
       <td><i>/home/user/app/123456-privatekey.p12</i></td>
     </tr>
     <tr>
-      <td><b>key_secret</b></td>
+      <td>key_secret</td>
       <td><i>notasecret</i></td>
     </tr>
     <tr>
       <td colspan="3">only for ga</td>
     </tr>
     <tr>
-      <td><b>cache</b></td>
+      <td>cache</td>
       <td><i>default: </i><b>GoogleApi::Cache.new</b></td>
       <td>more information <a href="#Cache">Cache</a></td>
     </tr>
@@ -107,12 +109,12 @@ There is a 3 way for starting sesssion.
 `First you must add your developer email to google analytics profile.`
 
 ```ruby
+# try login once
 GoogleApi::Ga::Session.login_by_cert
-```
 
-If login return false, trying login again.
+# ----- OR -----
 
-```ruby
+# trying login in loop
 GoogleApi::Ga::Session.login_by_cert!
 ```
 
@@ -211,7 +213,6 @@ GoogleApi::Ga::Goal
 
 ```ruby
 # Variables: segmentId, definition
-
 GoogleApi::Ga::Segment
 ```
 
@@ -305,6 +306,10 @@ GoogleApi::Ga::Data
 >
 > **parameters:**<br>
 > {(attribute operator value) & (attribute operator value) | (attribute operator value)} or String (not compiled)
+>
+> **operators:** ==, !=, >, <, >=, <=, =~, !~<br>
+> % &nbsp;&nbsp;&nbsp; _is &nbsp;=@_<br>
+> ** &nbsp;&nbsp;&nbsp; _is &nbsp;&nbsp;!@_
 
 <br>
 
@@ -315,6 +320,10 @@ GoogleApi::Ga::Data
 > **parameters:**<br>
 > {(attribute operator value) & (attribute operator value) | (attribute operator value)} or String (not compiled) <br>
 >  with {} automaticly add "dynamic::"
+>
+> **operators:** ==, !=, >, <, >=, <=, =~, !~<br>
+> % &nbsp;&nbsp;&nbsp; _is &nbsp;=@_<br>
+> ** &nbsp;&nbsp;&nbsp; _is &nbsp;&nbsp;!@_
 
 <br>
 
@@ -370,80 +379,95 @@ clear and fetch new:<br>
 Examples
 --------
 
-**Start session:**
+
 ```ruby
-# set configuration
-GoogleApi.config.ga.client_cert_file = "privatekey.p12"
-GoogleApi.config.ga.client_developer_email = "123456@developer.gserviceaccount.com"
+# >>> Start session
 
-# start session
-GoogleApi::Ga::Session.login_by_cert!
+  # set configuration
+  GoogleApi.config.ga.client_cert_file = "privatekey.p12"
+  GoogleApi.config.ga.client_developer_email = "123456@developer.gserviceaccount.com"
 
-# get profile id
-id = GoogleApi::Ga::Profile.all.first.id
+  # start session
+  GoogleApi::Ga::Session.login_by_cert!
 
-# set default id
-GoogleApi::Ga.id(id)
-```
-<br>
-**Starting session by line:**<br>
 
-First install launchy:<br>
-`gem install launchy`
-```ruby
-# callback_uri and port can be blank - auto start server at localhost
-GoogleApi::Ga::Session.login_by_line(callback_uri, port)
 
-# This will do
-# 1) create server
-# 2) launch browser and redirect to google api
-# 3) confirm and google api redirect to localhost
-# 4) server get code and start session
-# 5) close server
+# >>> Get profile id
 
-# Check session, error if not login
-GoogleApi::Ga::Session.check_session!
-```
-<br>
-**Management of accounts:**
-```ruby
-accounts = GoogleApi::Ga::Account.all # all accounts
+  # get profile id
+  id = GoogleApi::Ga::Profile.all.first.id
 
-accounts.first.webproperties # webproperties for account
+  # set default id
+  GoogleApi::Ga.id(id)
 
-GoogleApi::Ga::Webproperty.all # all webproperties
 
-GoogleApi::Ga::Profile.all # all profiles
 
-GoogleApi::Ga::Goal.all # all goal
+# >>> Starting session by line
 
-GoogleApi::Ga::Segment.all # all segment
-```
-<br>
-**Count of visitors between previous month and today.**
-```ruby
-GoogleApi::Ga::Data.from(-30).select(:visits).rows
-```
-<br>
-**Count of visitors between previous month and today - 2, and cache it for 30 minutes.**
-```ruby
-GoogleApi::Ga::Data.from(-30).to(DateTime.now - 2).select(:visits).cache(30).rows
-```
-<br>
-**Visitors by day, month, year from Czech Republic. Browser is Firefox and Opera or Chrome**
-```ruby
-GoogleApi::Ga::Data.from(-30)
-                   .select(:visits)
-                   .with(:day, :month, :year)
-                   .where{(country == "Czech Republic") & (browser == "Firefox") &
+  # First install launchy:
+  #   gem install launchy
+
+  # callback_uri and port are optional - auto start server at localhost
+  GoogleApi::Ga::Session.login_by_line(callback_uri, port)
+
+  # This will do
+  # 1) create server
+  # 2) launch browser and redirect to google api
+  # 3) confirm and google api redirect to localhost
+  # 4) server get code and start session
+  # 5) close server - you are login
+
+
+
+# >>> Check session, error if not login
+  
+  GoogleApi::Ga::Session.check_session!
+  
+  
+  
+# >>> Management of accounts
+
+  # all accounts
+  accounts = GoogleApi::Ga::Account.all
+
+  # webproperties for account
+  accounts.first.webproperties
+
+  # all webproperties
+  GoogleApi::Ga::Webproperty.all
+
+  # all profiles
+  GoogleApi::Ga::Profile.all
+
+  # all goal
+  GoogleApi::Ga::Goal.all
+
+  # all segment
+  GoogleApi::Ga::Segment.all
+
+
+
+# >>> Count of visitors between previous month and today
+
+  GoogleApi::Ga::Data.from(-30).select(:visits).rows
+
+
+# >>> Count of visitors between previous month and today - 2, and cache it for 30 minutes
+
+GoogleApi::Ga::Data.from(-30).to(-2).select(:visits).cache(30).rows
+
+
+# >>> Visitors by day, month, year from Czech Republic. Browser is Firefox and Opera or Chrome
+
+  GoogleApi::Ga::Data.from(-30).select(:visits).with(:day, :month, :year)
+                     .sort(:year, :month, :day)
+                     .where{(country == "Czech Republic") & (browser == "Firefox") &
                           (browser == "Opera") | (browser == "Chrome")}
-                   .sort(:year, :month, :day)
-                   .rows
-# OR
-GoogleApi::Ga::Data.from(-30)
-                   .select(:visits)
-                   .with(:day, :month, :year)
-                   .where("ga:country==Czech Republic;ga:browser==Firefox;ga:browser==Opera,ga:browser==Chrome")
-                   .sort(:year, :month, :day)
-                   .rows
+                     .rows
+  # ----- OR -----
+  GoogleApi::Ga::Data.from(-30).select(:visits).with(:day, :month, :year)
+                     .sort(:year, :month, :day)
+                     .where("ga:country==Czech Republic;ga:browser==Firefox;ga:browser==Opera,ga:browser==Chrome")
+                   
+                     .rows
 ```
