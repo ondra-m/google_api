@@ -359,12 +359,13 @@ For how long in minutes will be data cached. Use 0 for never expire.
 GoogleApi::Ga::Data.cache(minutes)
 
 # you can also clear cache
+# it will clear cache only for entered parameters
 GoogleApi::Ga::Data.clear_cache
 
 # if you want clear cache and cache new
 GoogleApi::Ga::Data.select(:visits).clear_cache.cache(60)
 
-# orif you don't want use cache at all, default: true
+# or if you don't want use cache at all, default: true
 GoogleApi::Ga::Data.use_cache(false)
 ```
 
