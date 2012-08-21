@@ -80,7 +80,7 @@ module GoogleApi
           end
 
           def #{key}=(value)
-            type?(value, Integer)
+            value = value.to_i
 
             @#{key} = value
           end
@@ -293,6 +293,10 @@ module GoogleApi
             self.ids = Ga.id
           end
 
+          if @ids.nil? || @ids == 0
+            raise GoogleApi::GaError, "Ids is required."
+          end
+
           @parameters = {}
 
           @parameters['ids']        = "ga:#{@ids}"
@@ -324,6 +328,10 @@ module GoogleApi
 
           result = _session.client.execute( api_method: _session.api.data.ga.get,
                                             parameters: parameters )
+
+          if result.error?
+            raise GoogleApi::GaError, result.error_message
+          end
 
           _cache.write(parameters, result, @cache) if @cache.is_a?(Integer)
 
