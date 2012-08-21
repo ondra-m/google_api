@@ -8,6 +8,8 @@ module GoogleApi
         @metrics, @dimensions, @sort = [], [], []
         @filters, @segment = nil, nil
         @start_index, @max_results = nil, nil
+        @error = false
+        @use_cache = true
       end
 
       # Auto initialize data 
@@ -235,6 +237,39 @@ module GoogleApi
         end
       end
 
+      # -----------------------------------------------------------------------------------
+      # Type 5
+      #
+      # Error, use cache
+      #
+      TYPE_5 = { error:     nil,
+                 use_cache: nil }
+      TYPE_5.each do |key, value|
+        eval <<-METHOD
+          def #{key}(value = nil)
+            if value.nil?
+              return @#{key}
+            end
+
+            if !value.is_a?(TrueClass) && !value.is_a?(FalseClass)
+              raise GoogleApi::TypeError, "Value must be true of false"
+            end
+
+            self.#{key} = value
+            self
+          end
+
+          def #{key}=(value)
+            @#{key} = value
+          end
+        METHOD
+      end
+
+      def clear_cache
+        _cache.delete(parameters)
+        self
+      end
+
       # Add row!, header!, all!, count!. First clear and run method .
       [:rows, :header, :all, :count].each do |value|
         eval <<-METHOD
@@ -283,7 +318,7 @@ module GoogleApi
       private
 
         def data
-          @data ||= get.data
+          @data ||= get
         end
 
         def parameters
@@ -322,18 +357,22 @@ module GoogleApi
         end
 
         def get
-          if @cache && _cache.exists?(parameters)
+          if @use_cache && _cache.exists?(parameters)
             return _cache.read(parameters)
           end
 
           result = _session.client.execute( api_method: _session.api.data.ga.get,
                                             parameters: parameters )
 
-          if result.error?
+          if @error && result.error?
             raise GoogleApi::GaError, result.error_message
           end
 
-          _cache.write(parameters, result, @cache) if @cache.is_a?(Integer)
+          result = result.data
+
+          if @use_cache && !@cache.nil?
+            _cache.write(parameters, result, @cache)
+          end
 
           result
         end
