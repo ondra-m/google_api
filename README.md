@@ -239,22 +239,73 @@ First you can play on the playground: http://ga-dev-tools.appspot.com/explorer/.
 ```ruby
 GoogleApi::Ga::Data
 ```
+
 <br>
+
+<table>
+  <thead>
+    <tr>
+      <th>method name</th>
+      <th>alias</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <tr>
+      <td>ids</td>
+      <td>id</td>
+    </tr>
+    <tr>
+      <td>start_date</td>
+      <td>from</td>
+    </tr>
+    <tr>
+      <td>end_date</td>
+      <td>to</td>
+    </tr>
+    <tr>
+      <td>metrics</td>
+      <td>select</td>
+    </tr>
+    <tr>
+      <td>dimensions</td>
+      <td>with</td>
+    </tr>
+    <tr>
+      <td>sort</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>filters</td>
+      <td>where</td>
+    </tr>
+    <tr>
+      <td>segment</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>start_index</td>
+      <td>offset</td>
+    </tr>
+    <tr>
+      <td>max_results</td>
+      <td>offset</td>
+    </tr>
+  </tbody>
+</table>
+
+
 > ## ids 
 >
-> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#ids" target="_blank" style="float:right">doc</a>
->
-> **alias:** id
+> **doc:** <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#ids" target="_blank">doc</a>
 >
 > Id of profile, by default is use id from GoogleApi::Ga.id.
 
 <br>
 
-> ## start_date
+> ## start_date, &nbsp;&nbsp; end_date
 >
-> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#startDate" target="_blank" style="float:right">doc</a>
->
-> **alias:** from
+> **doc:** <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#startDate" target="_blank">start-date</a>, <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#startDate" target="_blank">end-date</a>
 >
 > **default:** _Date.today_<br>
 > **parameters:**<br>
@@ -263,59 +314,19 @@ GoogleApi::Ga::Data
 
 <br>
 
-> ## end_date
+> ## metrics, &nbsp;&nbsp; dimensions, &nbsp;&nbsp; sort
 >
-> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#startDate" target="_blank" style="float:right">doc</a>
+> **doc:** <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#metrics" target="_blank">metrics</a>, <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#dimensions" target="_blank">dimensions</a>, <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#sort" target="_blank">sort</a>
 >
-> **alias:** from
->
-> **default:** _Date.today_<br>
-> **parameters:**<br>
-> &nbsp;&nbsp; _String_ in YYYY-MM-DD or _Date_ or _DateTime_ or _Time_<br>
-> &nbsp;&nbsp; _Integer_ for add or sub days from _Date.today_
-
-<br>
-
-> ## metrics
->
-> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#metrics" target="_blank" style="float:right">doc</a>
->
-> required parameters
->
-> **alias:** select
->
-> you can also add or sub parameters with `.metrics_add` or `.metrics_sub`
+> you can also add or sub parameters with `.method_add` or `.method_sub`
 >
 > **parameters:** Array with String or Symbol, String (not compiled, <i>"ga:visitors"</i>) or Symbol (compiled, <i>:visitors</i>)
 
 <br>
 
-> ## dimensions
+> ## filters, &nbsp;&nbsp; segment
 >
-> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#dimensions" target="_blank" style="float:right">doc</a>
->
-> **alias:** with
->
-> you can also add or sub parameters with `.dimensions_add` or `.dimensions_sub`
->
-> **parameters:** Array with String or Symbol, String (not compiled, <i>"ga:visitors"</i>) or Symbol (compiled, <i>:visitors</i>)
-
-<br>
-
-> ## sort
->
-> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#sort" target="_blank" style="float:right">doc</a>
-> you can also add or sub parameters with `.sort_add` or `.sort_sub`
->
-> **parameters:** Array with String or Symbol, String (not compiled, <i>"ga:visitors"</i>) or Symbol (compiled, <i>:visitors</i>)
-
-<br>
-
-> ## filters
->
-> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#filters" target="_blank" style="float:right">doc</a>
->
-> **alias:** where
+> **doc:** <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#filters" target="_blank">filters</a>, <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#segment" target="_blank">segment</a>
 >
 > **parameters:**<br>
 > {(attribute operator value) & (attribute operator value) | (attribute operator value)} or String (not compiled)
@@ -326,25 +337,9 @@ GoogleApi::Ga::Data
 
 <br>
 
-> ## segment
->
-> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#segment" target="_blank" style="float:right">doc</a>
->
-> **parameters:**<br>
-> {(attribute operator value) & (attribute operator value) | (attribute operator value)} or String (not compiled) <br>
->  with {} automaticly add "dynamic::"
->
-> **operators:** ==, !=, >, <, >=, <=, =~, !~<br>
-> % &nbsp;&nbsp;&nbsp; _is &nbsp;=@_<br>
-> ** &nbsp;&nbsp;&nbsp; _is &nbsp;&nbsp;!@_
-
-<br>
-
 > ## start_index
 >
-> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#startIndex" target="_blank" style="float:right">doc</a>
->
-> **alias:** offset
+> **doc:** <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#startIndex" target="_blank">start-index</a>
 >
 > **parameters:** Integer from 1. 
 
@@ -352,33 +347,49 @@ GoogleApi::Ga::Data
 
 > ## max_results
 >
-> <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#maxResults" target="_blank" style="float:right">doc</a>
->
-> **alias:** limit
+> **doc:** <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#maxResults" target="_blank">max-results</a>
 >
 > **parameters:** Integer from 1 to 10 000. 
 
-<br><br><br>
 
-> ## cache
-> 
-> For how long in minutes will be data cached. Use 0 for never expire.
+### Cache
 
-<br>
+For how long in minutes will be data cached. Use 0 for never expire.
+```ruby
+GoogleApi::Ga::Data.cache(minutes)
 
-> ## clear
->
-> Clear stored data.
+# you can also clear cache
+GoogleApi::Ga::Data.clear_cache
+
+# if you want clear cache and cache new
+GoogleApi::Ga::Data.select(:visits).clear_cache.cache(60)
+
+# orif you don't want use cache at all, default: true
+GoogleApi::Ga::Data.use_cache(false)
+```
+
+### Error
+
+What happen if parameters are wrong.
+```ruby
+# raise error with message
+GoogleApi::Ga::Data.error(true)
+
+# default, not raise error, just empty result
+GoogleApi::Ga::Data.error(false)
+```
 
 ### Fetch data
 
 You can use one of these. Data is stored in the class.
 
-`.all` - `[header, rows]`<br>
-`.rows` - rows returned by google analytics<br>
-`.header` - header of data, (`["ga:day", "ga:month", "ga:visitis"]`)<br>
-`.count` - number of rows<br>
-`.each` - each as you expected, (`|data|` or `|index, data|`)
+```
+.all    # [header, rows]
+.rows   # rows returned by google analytics
+.header # header of data, (["ga:day", "ga:month", "ga:visitis"])
+.count  # number of rows
+.each   # each as you expected, (`|data|` or `|index, data|`)
+```
 
 ### Clear stored data and fetch again
 
