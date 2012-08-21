@@ -289,7 +289,7 @@ GoogleApi::Ga::Data
     </tr>
     <tr>
       <td>max_results</td>
-      <td>offset</td>
+      <td>limit</td>
     </tr>
   </tbody>
 </table>
