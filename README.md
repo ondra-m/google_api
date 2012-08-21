@@ -394,7 +394,7 @@ You can use one of these. Data is stored in the class.
 
 ### Clear stored data and fetch again
 
-If you add some parameters clear is called automaticlly.
+If you add some parameters clear is called automatically.
 
 clear: `.clear`<br>
 
