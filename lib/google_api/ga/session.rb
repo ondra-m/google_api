@@ -26,6 +26,8 @@ module GoogleApi
             if to_return.nil?
               raise GoogleApi::CanBeNilError, "#{key} can be nil."
             end
+
+            to_return
           end
         METHOD
       end
