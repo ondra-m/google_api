@@ -389,7 +389,7 @@ You can use one of these. Data is stored in the class.
 .rows   # rows returned by google analytics
 .header # header of data, (["ga:day", "ga:month", "ga:visitis"])
 .count  # number of rows
-.each   # each as you expected, (`|data|` or `|index, data|`)
+.each   # each as you expected, (|data| or |index, data|)
 ```
 
 ### Clear stored data and fetch again
