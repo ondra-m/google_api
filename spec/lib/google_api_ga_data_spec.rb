@@ -10,7 +10,13 @@ describe "GoogleApi::Ga::Data" do
   # Rows
   # -------------------------------------------------------------------------------------------------
   it "rows" do
+    lambda { @data.new.rows }.should raise_error(GoogleApi::GaError)
+
+    GoogleApi::Ga.id(1)
+
     lambda { @data.new.rows }.should raise_error(GoogleApi::SessionError)
+
+    GoogleApi::Ga.id(0)
   end
 
 
