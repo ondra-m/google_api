@@ -4,8 +4,8 @@ require File.expand_path('../lib/google_api/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Ondřej Moravčík"]
   gem.email         = ["moravcik.ondrej@gmail.com"]
-  gem.description   = %q{Simple Google Api. Include google analytics.}
-  gem.summary       = %q{Simple Google Api. Include google analytics.}
+  gem.description   = %q{Simple Google Api. Include google analytics, url shortener.}
+  gem.summary       = %q{Simple Google Api. Include google analytics, url shortener.}
   gem.homepage      = "https://github.com/ondra-m/google_api"
 
   gem.files         = `git ls-files`.split($\)

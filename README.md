@@ -1,7 +1,8 @@
 Google Api [![Build Status](https://secure.travis-ci.org/ondra-m/google_api.png)](http://travis-ci.org/ondra-m/google_api)
 ==========
 
-Analytics - v1.0.0<br>
+Analytics<br>
+Url shortener - documentation is not complete yet<br>
 Calendar - will be soon 
 
 Google Analytics
@@ -449,7 +450,7 @@ Examples
 # Check session, error if not login
 # =================================
 
-  GoogleApi::Ga::Session.check_session!
+  GoogleApi::Ga::Session.check_session
   
   
   

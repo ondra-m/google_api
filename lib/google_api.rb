@@ -6,25 +6,26 @@ require "google_api/version"
 
 module GoogleApi
 
+  autoload :Session,        'google_api/session/session'
+  autoload :SessionMethods, 'google_api/session/session_methods'
+
   autoload :Cache, 'google_api/cache'
 
-  autoload :Ga, 'google_api/ga'
+  autoload :Ga,      'google_api/ga/ga'           # Google analytics
+  autoload :Shorten, 'google_api/shorten/shorten' # Google urlshortener
 
   class SessionError  < StandardError; end
   class GaError       < StandardError; end
+  class ShortenError  < StandardError; end
   class DateError     < StandardError; end
   class TypeError     < StandardError; end
   class CanBeNilError < StandardError; end
+  class RequireError  < StandardError; end
 
+  # Global configuration
   CONFIGURATION = {
-    client_id: nil,
-    client_secret: nil,
-    client_developer_email: nil,
-    client_cert_file: nil,
-    key_secret: 'notasecret',
-    redirect_uri: nil,
-
-    ga: Configuration.new(Ga::CONFIGURATION)
+    ga:      Configuration.new(Ga::CONFIGURATION),
+    shorten: Configuration.new(Shorten::CONFIGURATION)
   }
 
   def self.config

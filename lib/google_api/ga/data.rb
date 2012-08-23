@@ -86,7 +86,7 @@ module GoogleApi
       #
       #   def metrics=(value)
       #     clear
-      #     @metrics #{operator}= build_param(value)
+      #     @metrics = build_param(value)
       #   end
       #
       def self.create_array_method(name, operator = '', suffix = '')
