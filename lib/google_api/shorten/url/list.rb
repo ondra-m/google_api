@@ -3,7 +3,7 @@ module GoogleApi
     class List < Url
 
       def initialize
-        get
+        @data = get
       end
 
       def count
@@ -17,8 +17,10 @@ module GoogleApi
       private
         
         def get
-          @data = JSON.parse(_session.client.execute( api_method: _session.api.url.list,
-                                                      parameters: { projection: 'FULL' } ).response.env[:body])
+          JSON.parse(
+            _session.client.execute( api_method: _session.api.url.list,
+                                     parameters: { projection: 'FULL' } ).body
+          )
         end
 
     end

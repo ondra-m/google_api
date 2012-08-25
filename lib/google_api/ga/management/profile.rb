@@ -2,8 +2,8 @@ module GoogleApi
   module Ga
     class Profile < Management
 
-      attr_reader :accountId
-      attr_reader :webPropertyId
+      attr_reader :account_id
+      attr_reader :webproperty_id
       attr_reader :currency
       attr_reader :timezone
 
@@ -23,26 +23,18 @@ module GoogleApi
         @webproperty = nil
         @goals       = nil
 
-        set( Profile.get({ accountId: @accountId, webPropertyId: @webPropertyId, profileId: @id }).first )
+        set( Profile.get({ accountId: @account_id, webPropertyId: @webproperty_id, profileId: @id }).first )
 
         return true
       end
 
       def webproperty
-        @webproperty ||= Webproperty.find(@webpropertyId)
+        @webproperty ||= Webproperty.find(@webproperty_id)
       end
 
       def goals
-        @goals ||= Goal.all(@accountId, @webPropertyId, @id)
+        @goals ||= Goal.all(@account_id, @webproperty_id, @id)
       end
-
-      # def get(parameters, start_date = prev_month, end_date = now, expire = nil)
-      #   Data.get(@id, parameters, start_date, end_date, expire)
-      # end
-
-      # def get!(parameters, start_date = prev_month, end_date = now)
-      #   Data.get!(@id, parameters, start_date, end_date)
-      # end
 
       private
 
@@ -51,10 +43,10 @@ module GoogleApi
         end
 
         def set(profile)
-          @accountId     = profile['accountId']
-          @webPropertyId = profile['webPropertyId']
-          @currency      = profile['currency']
-          @timezone      = profile['timezone']
+          self.account_id     = profile['accountId']
+          self.webproperty_id = profile['webPropertyId']
+          self.currency       = profile['currency']
+          self.timezone       = profile['timezone']
 
           super(profile)
         end

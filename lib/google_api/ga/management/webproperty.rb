@@ -2,8 +2,8 @@ module GoogleApi
   module Ga
     class Webproperty < Management
 
-      attr_reader :accountId
-      attr_reader :websiteUrl
+      attr_reader :account_id
+      attr_reader :website_url
 
       def initialize(webproperty)
         set(webproperty)
@@ -21,17 +21,17 @@ module GoogleApi
         @account  = nil
         @profiles = nil
 
-        set( Webproperty.get({ accountId: @accountId, webPropertyId: @id }).first )
+        set( Webproperty.get({ accountId: @account_id, webPropertyId: @id }).first )
 
         return true
       end
 
       def account
-        @account ||= Account.find(@accountId)
+        @account ||= Account.find(@account_id)
       end
 
       def profiles
-        @profiles ||= Profile.all(@accountId, @id)
+        @profiles ||= Profile.all(@account_id, @id)
       end
 
       private
@@ -41,8 +41,8 @@ module GoogleApi
         end
 
         def set(webproperty)
-          @accountId  = webproperty['accountId']
-          @websiteUrl = webproperty['websiteUrl']
+          self.account_id  = webproperty['accountId']
+          self.website_url = webproperty['websiteUrl']
 
           super(webproperty)
         end

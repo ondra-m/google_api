@@ -2,9 +2,9 @@ module GoogleApi
   module Ga
     class Goal < Management
 
-      attr_reader :accountId
-      attr_reader :webPropertyId
-      attr_reader :profileId
+      attr_reader :account_id
+      attr_reader :webproperty_id
+      attr_reader :profile_id
       attr_reader :value
       attr_reader :active
       attr_reader :type
@@ -25,13 +25,13 @@ module GoogleApi
       def refresh
         @profile  = nil
 
-        set( Goal.get({ accountId: @accountId, webPropertyId: @id, profileId: @profileId, goalId: @id }).first )
+        set( Goal.get({ accountId: @account_id, webPropertyId: @webproperty_id, profileId: @profile_id, goalId: @id }).first )
 
         return true
       end
 
       def profile
-        @profile ||= Profile.find(@profileId)
+        @profile ||= Profile.find(@profile_id)
       end
 
       private
@@ -41,14 +41,14 @@ module GoogleApi
         end
 
         def set(goal)
-          @accountId     = goal['accountId']
-          @webPropertyId = goal['webPropertyId']
-          @profileId     = goal['profileId']
-          @value         = goal['value']
-          @active        = goal['active']
-          @type          = goal['type']
+          self.account_id     = goal['accountId']
+          self.webproperty_id = goal['webPropertyId']
+          self.profile_id     = goal['profileId']
+          self.value          = goal['value']
+          self.active         = goal['active']
+          self.type           = goal['type']
 
-          @goal = goal[camelize(@type) + 'Details']
+          self.goal = goal[camelize(@type) + 'Details']
 
           super(goal)
         end

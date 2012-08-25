@@ -23,8 +23,8 @@ module GoogleApi
 
         def get
           @data = JSON.parse(_session.client.execute( api_method: _session.api.url.get,
-                                           parameters: { shortUrl: @short_url,
-                                                         projection: @projection } ).response.env[:body])
+                                                      parameters: { shortUrl: @short_url,
+                                                                    projection: @projection } ).body)
         end
       
     end

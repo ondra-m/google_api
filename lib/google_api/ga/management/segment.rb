@@ -2,7 +2,7 @@ module GoogleApi
   module Ga
     class Segment < Management
 
-      attr_accessor :segmentId
+      attr_accessor :segment_id
       attr_accessor :definition
 
       def initialize(segment)
@@ -30,8 +30,8 @@ module GoogleApi
         end
         
         def set(segment)
-          @segmentId  = segment['segmentId']
-          @definition = segment['definition']
+          self.segment_id = segment['segmentId']
+          self.definition = segment['definition']
 
           super(segment)
         end

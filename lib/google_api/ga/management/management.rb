@@ -25,10 +25,10 @@ module GoogleApi
         end
 
         def set(values)
-          @id      = values['id']
-          @name    = values['name']
-          @created = values['created']
-          @updated = values['updated']
+          self.id      = values['id']
+          self.name    = values['name']
+          self.created = values['created']
+          self.updated = values['updated']
         end
 
     end
