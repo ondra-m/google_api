@@ -214,6 +214,8 @@ module GoogleApi
         @parameters = nil
         @data       = nil
         @all        = nil
+
+        self
       end
 
       # Clear cache
@@ -223,9 +225,9 @@ module GoogleApi
       end
 
       # Add row!, header!, all!, count!. First clear and run normal method.
-      [:rows, :header, :all, :count].each do |value|
+      [:rows, :header, :all, :count].each do |name|
         eval <<-METHOD
-          def #{value}!; clear; #{value}; end
+          def #{name}!; clear; #{name}; end
         METHOD
       end
 
@@ -246,16 +248,20 @@ module GoogleApi
       end
 
       def each(&block)
-        if block.arity == 1 # each
-          rows.each do |row|
-            yield(row)
-          end
-        else                # each with index
-          i = -1
-          rows.each do |row|
-            i += 1
-            yield(i, row)
-          end
+        case block.arity
+          # each
+          when 1
+            rows.each do |row|
+              yield(row)
+            end
+
+          # each with index
+          when 2
+            i = -1
+            rows.each do |row|
+              i += 1
+              yield(i, row)
+            end
         end
       end
 

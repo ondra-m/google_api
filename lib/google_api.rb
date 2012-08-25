@@ -1,6 +1,5 @@
 require "google/api_client"
 
-require "google_api/core_ext/hash"
 require "google_api/configuration"
 require "google_api/version"
 

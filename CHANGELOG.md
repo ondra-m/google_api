@@ -1,3 +1,10 @@
+## v1.1.0
+
+* add some test
+* GoogleApi::Ga::Data.clear now return self
+* GoogleApi::Ga::Data
+* GoogleApi::Shorten.insert and GoogleApi::Shorten.get is available without login
+
 ## v1.1.0.beta
 
 * add google urlshorter

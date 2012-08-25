@@ -8,7 +8,7 @@ module GoogleApi
       def initialize(long_url)
         @long_url = long_url
 
-        get
+        @short_url = _session.check_session ? get : get_without_login
       end
 
       def details(projection = 'FULL')
@@ -18,9 +18,26 @@ module GoogleApi
       private
 
         def get
-          @short_url = _session.client.execute( api_method: _session.api.url.insert,
-                                                body: { longUrl: @long_url }.to_json, 
-                                                headers: {'Content-Type' => 'application/json'} ).data.id
+          _session.client.execute( api_method: _session.api.url.insert,
+                                   body: { longUrl: @long_url }.to_json, 
+                                   headers: {'Content-Type' => 'application/json'} ).data.id
+        end
+
+        def get_without_login
+          require 'net/http'
+          require 'json'
+
+          uri = URI(Shorten::URLSHORTENER_URI)
+
+          req = Net::HTTP::Post.new(uri.path)
+          req.body = {longUrl: @long_url}.to_json
+          req.content_type = 'application/json'
+
+          res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+            http.request(req)
+          end
+
+          JSON.parse(res.body)['id']
         end
       
     end

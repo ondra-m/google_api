@@ -87,14 +87,44 @@ describe "GoogleApi::Ga::Data" do
 
 
 
-  # Date add and sub
+  # Save parameters
+  # -------------------------------------------------------------------------------------------------
+  it "save parameters" do
+    @data = @data.id(1)
+                 .from(Date.today)
+                 .to(Date.today)
+                 .select(:visits)
+                 .with(:day, :month, "ga:year")
+                 .where("country==Czech Republic")
+                 .offset(1)
+                 .limit(1)
+
+    @data.id.should eql(1)
+    @data.from.should eql(Date.today)
+    @data.to.should eql(Date.today)
+    @data.select.should eql(["ga:visits"])
+    @data.with.should eql(["ga:day", "ga:month", "ga:year"])
+    @data.where.should eql("country==Czech Republic")
+    @data.offset.should eql(1)
+    @data.limit.should eql(1)
+  end
+
+
+
+  # Date add
   # -------------------------------------------------------------------------------------------------
   it "date add and sub" do
     @data = @data.start_date(+30).end_date(+30)
 
     @data.start_date.should eql(Date.today + 30)
     @data.end_date.should eql(Date.today + 30)
+  end
 
+
+
+  # Date sub
+  # -------------------------------------------------------------------------------------------------
+  it "date add and sub" do
     @data = @data.start_date(Date.today).end_date(Date.today)
     @data = @data.start_date(-30).end_date(-30)
 

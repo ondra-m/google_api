@@ -3,14 +3,16 @@ module GoogleApi
 
     CONFIGURATION = {}
 
+    URLSHORTENER_URI = 'https://www.googleapis.com/urlshortener/v1/url'
+
     # Session
     autoload :Session, 'google_api/shorten/session'
 
     # Url
-    autoload :Url, 'google_api/shorten/url/url'
+    autoload :Url,    'google_api/shorten/url/url'
     autoload :Insert, 'google_api/shorten/url/insert'
-    autoload :List, 'google_api/shorten/url/list'
-    autoload :Get, 'google_api/shorten/url/get'
+    autoload :List,   'google_api/shorten/url/list'
+    autoload :Get,    'google_api/shorten/url/get'
 
     def self.insert(url)
       Insert.new(url)
