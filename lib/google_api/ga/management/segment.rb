@@ -30,8 +30,8 @@ module GoogleApi
         end
         
         def set(segment)
-          self.segment_id = segment['segmentId']
-          self.definition = segment['definition']
+          @segment_id = segment['segmentId']
+          @definition = segment['definition']
 
           super(segment)
         end

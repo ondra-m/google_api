@@ -41,8 +41,8 @@ module GoogleApi
         end
 
         def set(webproperty)
-          self.account_id  = webproperty['accountId']
-          self.website_url = webproperty['websiteUrl']
+          @account_id  = webproperty['accountId']
+          @website_url = webproperty['websiteUrl']
 
           super(webproperty)
         end
