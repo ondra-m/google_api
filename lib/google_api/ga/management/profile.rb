@@ -43,10 +43,10 @@ module GoogleApi
         end
 
         def set(profile)
-          self.account_id     = profile['accountId']
-          self.webproperty_id = profile['webPropertyId']
-          self.currency       = profile['currency']
-          self.timezone       = profile['timezone']
+          @account_id     = profile['accountId']
+          @webproperty_id = profile['webPropertyId']
+          @currency       = profile['currency']
+          @timezone       = profile['timezone']
 
           super(profile)
         end

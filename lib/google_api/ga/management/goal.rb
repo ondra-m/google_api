@@ -41,14 +41,14 @@ module GoogleApi
         end
 
         def set(goal)
-          self.account_id     = goal['accountId']
-          self.webproperty_id = goal['webPropertyId']
-          self.profile_id     = goal['profileId']
-          self.value          = goal['value']
-          self.active         = goal['active']
-          self.type           = goal['type']
+          @account_id     = goal['accountId']
+          @webproperty_id = goal['webPropertyId']
+          @profile_id     = goal['profileId']
+          @value          = goal['value']
+          @active         = goal['active']
+          @type           = goal['type']
 
-          self.goal = goal[camelize(@type) + 'Details']
+          @goal = goal[camelize(@type) + 'Details']
 
           super(goal)
         end
